@@ -1,11 +1,34 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-  </head>
-  <body>
-    {% block  %}{% endblock  %}
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> {% block title %}{% endblock title%} </title>
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/jquery.js"></script>
+</head>
+
+<body>
+
+  <h1> hiiii</h1>
+
+
+  {% block body %}{% endblock body %}
+</body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
