@@ -24,5 +24,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     #frontend routes
-    path('',shopview.index)
+    #path('',shopview.index),
+    path('shop/',shopview.catalog),
+    path('shop/product',shopview.product)
 ]
