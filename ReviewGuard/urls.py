@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from shop import views as shopview
+from backendApp import views as backendview
+
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
+    #frontend routes
+    #path('',shopview.index),
+    path('shop/',shopview.catalog),
+    path('shop/product',shopview.product)
 ]
