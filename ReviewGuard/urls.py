@@ -24,7 +24,11 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     #frontend routes
-    #path('',shopview.index),
+    path('',shopview.index),
     path('shop/',shopview.catalog),
-    path('shop/product',shopview.product)
+    path('shop/product',shopview.product),
+    path('orders/',shopview.orders),
+    path('checkout/',shopview.checkout),
+    path('register/',shopview.register),
+    path('login/',shopview.login),
 ]

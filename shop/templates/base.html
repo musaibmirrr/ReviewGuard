@@ -19,8 +19,8 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-  <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -221,9 +221,9 @@ text-decoration: line-through;
 
   <nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
     <div class="container">
-      <a class="navbar-brand d-md-none" href="#">
+      <a class="navbar-brand d-md-none" href="">
         <svg class="bi" width="24" height="24">
-          <use xlink:href="#aperture" />
+          <use xlink:href="" >
         </svg>
         Stop Shop
       </a>
@@ -238,26 +238,26 @@ text-decoration: line-through;
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav flex-grow-1 justify-content-between">
-            <li class="nav-item"><a class="nav-link" href="#">
+            <li class="nav-item"><a class="nav-link" href="">
                 <svg class="bi" width="24" height="24">
                   <use xlink:href="#aperture" />
                 </svg>
               </a></li>
 
-            <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+              <li class="nav-item"><a class="nav-link" href="/shop">Shop</a></li>
+              
+              <li class="nav-item"><a class="nav-link" href="/orders">Orders</a></li>
+              <li class="nav-item"><a class="nav-link" href="/aboutus">About us</a></li>
 
-            <li class="nav-item"><a class="nav-link" href="#">Orders</a></li>
-
-            <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
             <li class="nav-item ">
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   User
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">Register</a></li>
-                  <li><a class="dropdown-item" href="#">Login</a></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                  <li><a class="dropdown-item" href="/register">Register</a></li>
+                  <li><a class="dropdown-item" href="/login">Login</a></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
               </div>
               </li>
@@ -282,7 +282,7 @@ text-decoration: line-through;
 
 
 
-  <footer class="mx-5 py-5 bg-body-tertiary">
+  <footer class=" py-5 bg-dark text-white">
     <div class="row">
       <div class="col-12 col-md">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
@@ -293,7 +293,7 @@ text-decoration: line-through;
           <path
             d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
         </svg>
-        <small class="d-block mb-3 text-body-secondary">&copy; Stop Shop 2024</small>
+        <small class="d-block mb-3 text-white">&copy; Stop Shop 2024</small>
       </div>
       <div class="col-6 col-md">
         <h5>Categories</h5>

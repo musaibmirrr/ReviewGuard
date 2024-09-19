@@ -10,3 +10,15 @@ def catalog(req):
 
 def product(req):
     return render(req, 'product.html')
+
+def orders(req):
+    return render(req, 'orders.html')
+
+def checkout(req):
+    return render(req, 'checkout.html')
+
+def register(req):
+    return render(req, 'register.html')
+
+def login(req):
+    return render(req, 'login.html')
