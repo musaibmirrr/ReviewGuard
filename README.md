@@ -16,6 +16,4 @@ django-admin startproject projectname
 git add .
 git commit -m "Some Text"
 git push origin main
-
-
- pip install -r requirements.txt 
+pip install -r requirements.txt 
