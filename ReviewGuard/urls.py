@@ -31,4 +31,8 @@ urlpatterns = [
     path('checkout/',shopview.checkout),
     path('register/',shopview.register),
     path('login/',shopview.login),
+
+
+    #backend routes
+     path('dash/',backendview.index),
 ]
