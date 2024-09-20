@@ -35,4 +35,8 @@ urlpatterns = [
 
     #backend routes
      path('dash/',backendview.index),
+     path('dash/viewproducts',backendview.viewproducts),
+     path('dash/addproducts',backendview.addproducts),
+     path('dash/orders',backendview.allorders),
+     path('dash/users',backendview.users),
 ]
