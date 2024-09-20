@@ -3,4 +3,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(req):
-    return render(req, 'boilerplate.html')
+    return render(req, 'dashboard.html')

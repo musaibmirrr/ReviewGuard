@@ -1,11 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Haazim Musaib Aisha Ibraheem.
-</body>
-</html>
+{% extends "boilerplate.html" %}
+{% block title %}Dashboard{% endblock title %}
+{% block body %}
+{% comment %} class="col-md-9 ms-sm-auto col-lg-10 px-md-4" {% endcomment %}
+<main class="px-md-4">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+
+    </div>
+
+    <div >
+        <div>
+        <!-- class=" border border-dark" -->
+       <h2 class=" d-inline border border-2 border-rounded-pill border-dark m-5 my-5 p-3 bg-secondary"> ALL REVIEWS</h2>
+    </div>
+        <br>
+        <div class="table-responsive mx-0">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+
+                        <th scope="col">PRODUCT</th>
+                        <th scope="col">USER ID</th>
+                        <th scope="col">STAR RATING</th>
+                        <th scope="col">REVIEWS</th>
+                        <th scope="col">SENTIMENT</th>
+                        <th scope="col">SUBJECTIVITY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>Watch</td>
+                        <td>0101012</td>
+                        <td>5</td>
+                        <td>Good product!</td>
+                        <td>0.5</td>
+                        <td>0.77</td>
+                    </tr>
+                    <tr>
+                        <td>Bag</td>
+                        <td>012589</td>
+                        <td>4</td>
+                        <td>Good product! i liked the product</td>
+                        <td>0.9</td>
+                        <td>0.76</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+</div>
+</div>
+
+
+
+
+{% endblock body %}
