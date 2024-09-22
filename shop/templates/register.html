@@ -107,6 +107,18 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
             display: block !important;
         }
+
+        body {
+            /* background: linear-gradient(to bottom, #2A0A11, #110E15); */
+            /* background: linear-gradient(to bottom, #634682,#4A3461); */
+            background: linear-gradient(to bottom, #202020, #090909);
+
+
+            overflow-x: hidden;
+            /* Hides horizontal scrollbar */
+            height: 100vh;
+
+        }
     </style>
 
 
@@ -114,37 +126,43 @@
     <link href="sign-in.css" rel="stylesheet">
 </head>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
-  
+<body class="d-flex align-items-center py-4 ">
+
 
 
     <main class="form-signin w-100 m-auto my-5">
         <div class="row">
             <div class="col-6 offset-3">
-                <form method="post" >
-               
-                    <h1 class="h3 mb-3 fw-normal text-center">REGISTER</h1>
+                <form method="post">
 
+                    <h1 class="h3 mb-3 fw-normal fs-2 text-center text-white">Sign yourself into <span class="fw-bold"> STOP SHOP!</span> </h1>
+                 
+<br>
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Enter username" name="Username" required>
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Enter username"
+                            name="Username" required>
                         <label for="floatingInput">Username</label>
                     </div>
                     <br>
                     <div class="form-floating">
-                        <input type="Email" class="form-control" id="floatingEmail" placeholder="Enter Email" name="Email" required>
+                        <input type="Email" class="form-control" id="floatingEmail" placeholder="Enter Email"
+                            name="Email" required>
                         <label for="floatingEmail">Email</label>
                     </div>
                     <br>
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Enter Password" name="Password" required>
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Enter Password"
+                            name="Password" required>
                         <label for="floatingPassword">Password</label>
                     </div>
-                    
+
                     <br>
 
-                    
-                    <button class="btn btn-primary w-100 py-2" type="submit">Sign Up</button>
-                    <p class="mt-5 mb-3 text-body-secondary">&copy; Stop Shop</p>
+<div class="d-flex justify-content-center">
+
+    <button class="btn btn-outline-light  py-2 " type="submit">Sign Up</button>
+</div>
+                    <p class="mt-5 mb-3 text-white">&copy; Stop Shop</p>
                 </form>
             </div>
         </div>
