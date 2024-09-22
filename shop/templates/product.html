@@ -2,88 +2,152 @@
 
 {% block title %}Shop{% endblock title %}
 {% block body %}
+
 <div class="container my-5">
-    <div class="card mb-3" style="max-width: 100">
+    <div class="card mb-3 cardstyle" style="max-width: 100 ">
         <div class="row g-0">
             <div class="col-md-4">
                 <a href=""> <img src="../static/imgs/img2.avif" class="img-fluid rounded-start" alt="..."></a>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 text-white">
                 <div class="card-body">
-                    <a href="/product" class=" text-decoration-none ">
-                        <h3 class="card-title">Fendi Bag</h3>
+                    <a href="/shop/product" class=" text-decoration-none ">
+                        <h2 class="card-title ">Fendi Handbag</h2>
                     </a>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                         additional content. This content is a little bit longer.</p>
-                    <h4 class="price">$1999</h4><span><span class=" text-body-secondary">MRP:</span><span
-                            class="mrp text-body-secondary">$2500</span>
+                    <br>
+                    <h4 class="price">$1999</h4><span><span class=" text-white">MRP:</span><span
+                            class="mrp text-white">$2500</span>
+                        <br>
                         <p class="card-text"><small>Inclusive of all taxes</small></p>
-
-                    <button class="btn btn-dark btn-outline-light">Buy Now  </button>
                 </div>
             </div>
         </div>
     </div>
+
     <br>
 
     <div class="row">
         <div class="col-6">
-            <h2>Leave a Review</h2>
-
-            <form  class="mb-3 validated-form "
-            novalidate>
+            <h2 class="text-white fw-bold"> Leave a Review</h2>
+            <br>
+            <form class="mb-3 validated-form " novalidate>
                 <div class="mb-3">
-                    <label class="form-label" for="rating">Rating</label>
+                    <label class="form-label text-white fs-5 " for="rating">Rating</label>
                     <input class="form-range" type="range" min="0" max="5" name="rating" id="rating">
                 </div>
-
+                <br>
                 <div class="mb-3">
-                    <label class="form-label col-6" for="body">Review</label>
+                    <label class="form-label col-6 fs-5 text-white" for="body">Review</label>
                     <textarea name="reviewbody" id="body" class="form-control" cols="30" rows="3" required></textarea>
-                    
+
                     <div class="invalid-feedback">
                         Review can't be empty!
                     </div>
                 </div>
                 <button class="btn btn-success">Submit</button>
+
             </form>
         </div>
 
-        
-            <div class="card mb-3">
-                <div class="card-body">
+<div class="row">
+    <div class="col-6">
+        <div class="card mb-3 my-5">
+            <div class="card-body">
 
-                    <h5 class="card-title">
-                        Rating - 2
-                    </h5>
-                    <p class="card-text">
-                        Review - Very Bad
-                    </p>
-                </div>
+                <h4 class="card-title">
+                    @hazim <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
+                        <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z"/>
+                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
+                      </svg></span>
+                </h4>
+                <h5 class="card-title text-muted">
+                    Rating - 2
+                </h5>
+                <p class="card-text">
+                     Good Product!
+                </p>
             </div>
-            <div class="card mb-3">
-                <div class="card-body">
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card mb-3 my-5">
+            <div class="card-body">
 
-                    <h5 class="card-title">
-                        Rating - 2
-                    </h5>
-                    <p class="card-text">
-                        Review - Very Bad
-                    </p>
-                </div>
+                <h4 class="card-title">
+                    @hazim <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
+                        <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z"/>
+                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
+                      </svg></span>
+                </h4>
+                <h5 class="card-title text-muted">
+                    Rating - 2
+                </h5>
+                <p class="card-text">
+                     Good Product!
+                </p>
             </div>
-            <div class="card mb-3">
-                <div class="card-body">
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card mb-3 my-5">
+            <div class="card-body">
 
-                    <h5 class="card-title">
-                        Rating - 2
-                    </h5>
-                    <p class="card-text">
-                        Review - Very Bad
-                    </p>
-                </div>
+                <h4 class="card-title">
+                    @hazim <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
+                        <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z"/>
+                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
+                      </svg></span>
+                </h4>
+                <h5 class="card-title text-muted">
+                    Rating - 2
+                </h5>
+                <p class="card-text">
+                     Good Product!
+                </p>
             </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card mb-3 my-5">
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    @hazim <span class="text-muted fs-6">(Verified)</span> 
+                </h4>
+                <h5 class="card-title text-muted">
+                    Rating - 2
+                </h5>
+                <p class="card-text">
+                     Good Product!
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card mb-3 my-5">
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    @hazim <span><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
+                        <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z"/>
+                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
+                      </svg></span>
+                </h4>
+                <h5 class="card-title text-muted">
+                    Rating - 2
+                </h5>
+                <p class="card-text">
+                     Good Product!
+                </p>
+            </div>
+        </div>
+    </div>
+   
+</div>
        
+        
 
 
     </div>
@@ -92,26 +156,26 @@
 
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-    'use strict'
+    (() => {
+        'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.validated-form')
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.validated-form')
 
-    // Loop over them and prevent submission
-    //   this a way of turning something into array
-    Array.from(forms)
-        .forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
+        // Loop over them and prevent submission
+        //   this a way of turning something into array
+        Array.from(forms)
+            .forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
 
-                form.classList.add('was-validated')
-            }, false)
-        })
-})()
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>
 
 
