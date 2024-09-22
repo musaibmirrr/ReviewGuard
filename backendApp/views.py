@@ -16,3 +16,6 @@ def allorders(req):
 
 def users(req):
     return render(req, 'users.html')
+
+def login(req):
+    return render(req, 'login.html')

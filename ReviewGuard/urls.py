@@ -39,4 +39,5 @@ urlpatterns = [
      path('dash/addproducts',backendview.addproducts),
      path('dash/orders',backendview.allorders),
      path('dash/users',backendview.users),
+     path('dash/login',backendview.login),
 ]
