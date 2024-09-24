@@ -126,7 +126,7 @@
     <main class="form-signin w-100 m-auto ">
         <div class="row ">
             <div class="col-6 offset-3">
-                <form method="post" action = "/reviewGuard/login" novalidate class="validated-form">
+                <form method="post" action = "{% url 'login' %}" novalidate class="validated-form">
                     {% csrf_token %}
                     <br>
                     <h1 class="h3 mb-3 fw-normal text-center" >ADMIN LOGIN</h1>

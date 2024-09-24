@@ -3,6 +3,7 @@ from .models import Product
 from django.contrib.auth import authenticate, login, logout 
 from django.contrib.auth.decorators import login_required, user_passes_test
 # Create your views here.
+
 def admin_check(user):
     return user.is_superuser or user.is_staff
 
