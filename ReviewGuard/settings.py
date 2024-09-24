@@ -43,10 +43,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -140,4 +140,5 @@ MEDIA_ROOT = BASE_DIR/'/media'
 
 LOGIN_URL = '/reviewGuard/login'  # URL where users will be redirected to log in
 LOGIN_REDIRECT_URL = '/reviewGuard'  # Redirect after successful login
+
 
