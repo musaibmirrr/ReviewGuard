@@ -4,16 +4,10 @@
 
 {% block body  %}
 
-{% comment %} {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li class="{{ message.tags }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %} {% endcomment %}
 
-  {% if success %}
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+
+  {% if succ %}
+    <div class="alert alert-light alert-dismissible fade show" role="alert">
        The Product has been successfully added!
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
