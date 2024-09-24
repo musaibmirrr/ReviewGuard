@@ -1,23 +1,23 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import Product
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
-@login_required
+# @login_required
 def index(req):
     return render(req, 'dashboard.html')
 
 
-@login_required
+# @login_required
 def viewproducts(req):
     products = Product.objects.all()
     return render(req, 'viewproducts.html', {'products': products})
 
 
-@login_required
+# @login_required
 def addproducts(req):
     if (req.method == 'POST'):
         name = req.POST.get('productname')
@@ -32,18 +32,18 @@ def addproducts(req):
     return render(req, 'addproducts.html')
 
 
-@login_required
+# @login_required
 def allorders(req):
     return render(req, 'allorders.html')
 
 
-@login_required
+# @login_required
 def users(req):
     return render(req, 'users.html')
 
 
-def login(req):
-    if (req.method == 'POST'):
+def dash_login(req):
+    if req.method == 'POST':
         username = req.POST.get('username')
         password = req.POST.get('password')
         # authentication

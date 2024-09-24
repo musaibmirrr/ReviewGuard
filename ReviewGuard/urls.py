@@ -43,7 +43,7 @@ urlpatterns = [
      
      path('reviewGuard/orders',backendview.allorders),
      path('reviewGuard/users',backendview.users),
-     path('reviewGuard/login',backendview.login),
+     path('reviewGuard/login',backendview.dash_login),
 ]
 
 if settings.DEBUG:
