@@ -4,12 +4,16 @@
 
 {% block body  %}
 
-  {% if success %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-       The Product has been successfully added!
+
+
+  {% if messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {%for message in messages%}
+      {{message}}
+      {%endfor%}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-  {% endif %}
+    {% endif %} 
 
 <div class="container my-5 py-4 px-0 bg-dark " >
     <div class="container my-2 py-2 bg-dark ">
