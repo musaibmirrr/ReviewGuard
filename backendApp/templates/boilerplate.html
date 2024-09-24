@@ -96,8 +96,10 @@
            
           </ul>
          
-           
+           <form action="/reviewGuard/signout" method="POST">
+              {% csrf_token %}
             <button class="btn btn-outline-light" type="submit">Sign Out</button>
+          </form>
           
         </div>
       </div>

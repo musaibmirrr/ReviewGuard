@@ -20,5 +20,5 @@ def checkout(req):
 def register(req):
     return render(req, 'register.html')
 
-def login(req):
-    return render(req, 'login.html')
+def user_login(req):
+    return render(req, 'user_login.html')

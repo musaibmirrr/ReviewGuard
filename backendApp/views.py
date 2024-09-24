@@ -42,7 +42,7 @@ def users(req):
     return render(req, 'users.html')
 
 
-def login(req):
+def admin_login(req):
     if (req.method == 'POST'):
         username = req.POST.get('username')
         password = req.POST.get('password')
@@ -58,10 +58,11 @@ def login(req):
             # Invalid login credentials
             return redirect('/reviewGuard/login')
 
-    return render(req, 'login.html')
+    return render(req, 'admin_login.html')
 
 
 def user_logout(req):
-    logout(req)
+    if (req.method == 'POST'):
+        logout(req)
+        return redirect('/reviewGuard/login')
     # Redirect to login after logging out
-    return redirect('/reviewGuard/login')
