@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
 from .models import Product
-from django.contrib import messages
-
 # Create your views here.
 
 
@@ -11,7 +9,7 @@ def index(req):
 
 def viewproducts(req):
     products = Product.objects.all()
-    return render(req, 'viewproducts.html', {'products' : products})
+    return render(req, 'viewproducts.html', {'products': products})
 
 
 def addproducts(req):
@@ -24,7 +22,7 @@ def addproducts(req):
         product = Product(name=name, description=description,
                           price=price, mrp=mrp, image=image)
         product.save()
-        messages.success(req, 'Product has been successfully added!')
+        return redirect('/reviewGuard/viewproducts')
     return render(req, 'addproducts.html')
 
 
