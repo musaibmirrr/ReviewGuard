@@ -126,9 +126,9 @@
     <main class="form-signin w-100 m-auto ">
         <div class="row ">
             <div class="col-6 offset-3">
-                <form method="POST" action="{% url 'admin_login' %}" novalidate class="validated-form">
-                    {% csrf_token %}
-                    
+                <form method="POST" action="/reviewGuard/login" novalidate class="validated-form">
+                    {% comment %} {% csrf_token %} {% endcomment %}
+                    <br>
                     <h1 class="h3 mb-3 fw-normal text-center" >ADMIN LOGIN</h1>
 
                     <div class="form-floating">
