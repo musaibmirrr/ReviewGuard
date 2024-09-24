@@ -1,25 +1,21 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from .models import Product
-from django.contrib.auth import authenticate, login, logout 
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 
-def admin_check(user):
-    return user.is_superuser or user.is_staff
-
-@login_required
-@user_passes_test(admin_check)
+# @login_required
 def index(req):
     return render(req, 'dashboard.html')
 
-@login_required
-@user_passes_test(admin_check)
+# @login_required
 def viewproducts(req):
     products = Product.objects.all()
     return render(req, 'viewproducts.html', {'products': products})
 
-@login_required
-@user_passes_test(admin_check)
+# @login_required
 def addproducts(req):
     if (req.method == 'POST'):
         name = req.POST.get('productname')
@@ -33,26 +29,29 @@ def addproducts(req):
         return redirect('/reviewGuard/viewproducts')
     return render(req, 'addproducts.html')
 
-@login_required
-@user_passes_test(admin_check)
+# @login_required
 def allorders(req):
     return render(req, 'allorders.html')
 
-@login_required
-@user_passes_test(admin_check)
+# @login_required
 def users(req):
     return render(req, 'users.html')
 
 
 def login(req):
-    if req.method == 'POST': 
+    if (req.method == 'POST'):
         username = req.POST.get('username')
         password = req.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        # authentication
+        user = authenticate(req, username=username, password=password)
+
         if user is not None:
-            login(request, user)
+            # Log the user in and redirect to a protected page (like admin dashboard)
+            login(req, user)
+            # Replace with your desired redirect URL
             return redirect('/reviewGuard')
         else:
-            return render(req, 'login.html')
+            # Invalid login credentials
+            return redirect('/reviewGuard/login')
 
     return render(req, 'login.html')
