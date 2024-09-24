@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Product
-
+from django.contrib import messages
 # Create your views here.
 
 
@@ -23,7 +23,8 @@ def addproducts(req):
         product = Product(name=name, description=description,
                           price=price, mrp=mrp, image=image)
         product.save()
-    return render(req, 'addproducts.html')
+        messages.success(req,'Product has been successfully added!')
+    return redirect('')
 
 
 def allorders(req):
