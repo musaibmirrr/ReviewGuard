@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from shop import views as shopview
 from backendApp import views as backendview
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -34,10 +36,15 @@ urlpatterns = [
 
 
     #backend routes
-     path('dash/',backendview.index),
-     path('dash/viewproducts',backendview.viewproducts),
-     path('dash/addproducts',backendview.addproducts),
-     path('dash/orders',backendview.allorders),
-     path('dash/users',backendview.users),
-     path('dash/login',backendview.login),
+     path('reviewGuard/',backendview.index),
+     path('reviewGuard/viewproducts',backendview.viewproducts),
+
+     path('reviewGuard/addproducts',backendview.addproducts),
+     
+     path('reviewGuard/orders',backendview.allorders),
+     path('reviewGuard/users',backendview.users),
+     path('reviewGuard/login',backendview.login),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

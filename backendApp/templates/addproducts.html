@@ -11,7 +11,8 @@
         ADD PRODUCT
     </h1>
     <br>
-    <form method="post" novalidate class="row g-3 validated-form " >
+    <form method="POST" action="/reviewGuard/addproducts" novalidate class="row g-3 validated-form">
+      {% csrf_token %}
         <br>
         <div class="col-6 offset-3  fs-5">
           <label for="inputAddress" class="form-label text-white">Product Name</label>
@@ -26,7 +27,7 @@
 
         <div class="col-6 offset-3 fs-5">
           <label for="formFile" class="form-label text-white">Product Image</label>
-          <input class="form-control" type="file" id="formFile" required>
+          <input class="form-control" type="file" id="formFile" name="image" required>
           <div class="valid-feedback">
             Looks good!
         </div><div class="invalid-feedback">
@@ -36,7 +37,7 @@
 
         <div class="col-6 offset-3 fs-5">
             <label for="inputCity" class="form-label  text-white">Product Description</label>
-            <input type="text" class="form-control" id="inputCity" name="Description" required>
+            <input type="text" class="form-control" id="inputCity" name="description" required>
             <div class="valid-feedback">
               Looks good!
           </div><div class="invalid-feedback">
@@ -56,7 +57,7 @@
      
         <div class="col-6 offset-3  fs-5">
             <label for="inputCity" class="form-label text-white">Product MRP</label>
-            <input type="number" class="form-control" id="inputCity" name="Mrp" required>
+            <input type="number" class="form-control" id="inputCity" name="mrp" required>
             <div class="valid-feedback">
               Looks good!
           </div><div class="invalid-feedback">

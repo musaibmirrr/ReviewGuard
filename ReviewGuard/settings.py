@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     'shop.apps.ShopConfig',
     'backendApp.apps.BackendappConfig',
     'django.contrib.admin',
@@ -133,3 +134,11 @@ STATICFILES_DIRS=[
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'/media'
+
+LOGIN_URL = '/reviewGuard/login'  # URL where users will be redirected to log in
+LOGIN_REDIRECT_URL = '/reviewGuard'  # Redirect after successful login
+
+
