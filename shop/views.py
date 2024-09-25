@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -30,10 +30,13 @@ def catalog(req):
 
 
 
-def product(req):
+def product_detail(req, id):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
-        context = {'name' : req.user.username}
-        return render(req, 'product.html',context)
+        product = get_object_or_404(Product, id=id)
+        context = {'name' : req.user.username,
+                   'product' : product
+                   }
+        return render(req, 'product_detail.html',context)
     else:
         return redirect('/shop/login')
 

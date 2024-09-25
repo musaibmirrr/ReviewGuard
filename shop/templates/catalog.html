@@ -8,11 +8,11 @@
     <div class="card mb-3 cardstyle" style="max-width: 100 ">
         <div class="row g-0">
             <div class="col-md-4">
-                <a href=""> <img src= "{{product.image.url}}" class="img-fluid rounded-start" alt="..."></a>
+                <a href="/shop/product/{{product.id}}"> <img src= "{{product.image.url}}" class="img-fluid rounded-start" alt="..."></a>
             </div>
             <div class="col-md-8 text-white">
                 <div class="card-body">
-                    <a href="/shop/product" class=" text-decoration-none ">
+                    <a href="/shop/product/{{product.id}}" class=" text-decoration-none ">
                         <h2 class="card-title hoverHeader">{{product.name}}</h2>
                     </a>
                     <p class="card-text">{{product.description}}</p>
