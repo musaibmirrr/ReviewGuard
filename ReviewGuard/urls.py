@@ -31,8 +31,9 @@ urlpatterns = [
     path('shop/product',shopview.product),
     path('orders/',shopview.orders),
     path('checkout/',shopview.checkout),
-    path('register/',shopview.register),
-    path('login/',shopview.user_login),
+    path('shop/register/',shopview.user_register),
+    path('shop/login/',shopview.user_login),
+    path('shop/logout/',shopview.user_logout),
 
 
     #backend routes

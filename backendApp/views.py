@@ -1,48 +1,57 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import Product
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
-
 
 # Create your views here.
 
-@login_required
+
 def index(req):
-    return render(req, 'dashboard.html')
+    if req.user.is_authenticated and req.user.is_superuser:
+        return render(req, 'dashboard.html')
+    else:
+        return redirect('/reviewGuard/login')
 
 
-@login_required
 def viewproducts(req):
-    products = Product.objects.all()
-    return render(req, 'viewproducts.html', {'products': products})
+    if req.user.is_authenticated and req.user.is_superuser:
+        products = Product.objects.all()
+        return render(req, 'viewproducts.html', {'products': products})
+    else:
+        return redirect('/reviewGuard/login')
 
 
-@login_required
 def addproducts(req):
-    if (req.method == 'POST'):
-        name = req.POST.get('productname')
-        description = req.POST.get('description')
-        price = req.POST.get('price')
-        mrp = req.POST.get('mrp')
-        image = req.FILES.get('image')
-        product = Product(name=name, description=description,
+    if req.user.is_authenticated  and req.user.is_superuser:
+        if (req.method == 'POST'):
+            name = req.POST.get('productname')
+            description = req.POST.get('description')
+            price = req.POST.get('price')
+            mrp = req.POST.get('mrp')
+            image = req.FILES.get('image')
+            product = Product(name=name, description=description,
                           price=price, mrp=mrp, image=image)
-        product.save()
-        messages.success(req, 'Product added successfully!')
-        return redirect('/reviewGuard/viewproducts')
-    return render(req, 'addproducts.html')
+            product.save()
+            messages.success(req, 'Product added successfully!')
+            return redirect('/reviewGuard/viewproducts')
+        return render(req, 'addproducts.html')
+    else:
+        return redirect('/reviewGuard/login')
 
 
-@login_required
+
+
 def allorders(req):
-    return render(req, 'allorders.html')
+    if req.user.is_authenticated  and req.user.is_superuser:
+        return render(req, 'allorders.html')
+    else:
+        return redirect('/reviewGuard/login')
 
-
-@login_required
 def users(req):
-    return render(req, 'users.html')
+    if req.user.is_authenticated  and req.user.is_superuser:
+        return render(req, 'users.html')
+    else:
+        return redirect('/reviewGuard/login')
 
 
 def admin_login(req):
@@ -52,12 +61,17 @@ def admin_login(req):
         # authentication
         user = authenticate(req, username=username, password=password)
 
+
         if user is not None:
+          if(user.is_superuser):
             # Log the user in and redirect to a protected page (like admin dashboard)
             login(req, user)
             messages.success(req, 'Welcome back admin!')
             # Replace with your desired redirect URL
             return redirect('/reviewGuard')
+          else:
+            messages.error(req, 'A user cannot access admin page!')
+            return redirect('/reviewGuard/login')
         else:
             # Invalid login credentials
             messages.error(req, 'Invalid username or password')
@@ -65,13 +79,17 @@ def admin_login(req):
 
     return render(req, 'admin_login.html')
 
-@login_required
+
+
 def admin_logout(req):
-    if (req.method == 'POST'):
-        logout(req)
-        messages.success(req, 'You have signed out!')
-        return redirect('/reviewGuard/login')
-    messages.error(req,'Cannot proceed that request!')
-    return redirect('/reviewGuard')
-    
+    if req.user.is_authenticated and req.user.is_superuser:
+        if (req.method == 'POST'):
+            logout(req)
+            messages.success(req, 'You have signed out!')
+            return redirect('/reviewGuard/login')
+        else:
+            messages.error(req, 'Cannot proceed that request!')
+            return redirect('/reviewGuard')
+    messages.error(req, 'You dont have permission to do that!')    
+    return redirect('/reviewGuard/login')
     # Redirect to login after logging out

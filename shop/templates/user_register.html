@@ -126,62 +126,74 @@
     <link href="sign-in.css" rel="stylesheet">
 </head>
 
-<body class="d-flex align-items-center py-4 ">
+<body>
+    <header>
 
+        {% include 'partials/flash.html' %}
 
+    </header>
 
-    <main class="form-signin w-100 m-auto my-5">
-        <div class="row">
-            <div class="col-6 offset-3">
-                <form method="post" novalidate class="validated-form">
+    <div class="d-flex align-items-center py-4">
+        <main class="form-signin w-100 m-auto my-5">
+            <div class="row">
+                <div class="col-6 offset-3">
+                    <form method="POST" action="/shop/register/" novalidate class="validated-form">
+                        {% csrf_token %}
+                        <h1 class="h3 mb-3 fw-normal fs-2 text-center text-white">Sign yourself into <span
+                                class="fw-bold"> STOP SHOP!</span> </h1>
 
-                    <h1 class="h3 mb-3 fw-normal fs-2 text-center text-white">Sign yourself into <span class="fw-bold"> STOP SHOP!</span> </h1>
-                 
-<br>
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingInput" 
-                            name="Username" required>
-                        <label for="floatingInput">Username</label>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div><div class="invalid-feedback">
-                            This field cannot be empty!
+                        <br>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInput" name="username" required>
+                            <label for="floatingInput">Username</label>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                This field cannot be empty!
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="form-floating">
-                        <input type="Email" class="form-control" id="floatingEmail" 
-                            name="Email" required>
-                        <label for="floatingEmail">Email</label>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div><div class="invalid-feedback">
-                            This field cannot be empty!
+                        <br>
+                        <div class="form-floating">
+                            <input type="Email" class="form-control" id="floatingEmail" name="email" required>
+                            <label for="floatingEmail">Email</label>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                This field cannot be empty!
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" 
-                            name="Password" required>
-                        <label for="floatingPassword">Password</label>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div><div class="invalid-feedback">
-                            This field cannot be empty!
+                        <br>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="floatingPassword" name="password" required>
+                            <label for="floatingPassword">Password</label>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                This field cannot be empty!
+                            </div>
                         </div>
-                    </div>
 
-                    <br>
+                        <br>
 
-<div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-between">
 
-    <button class="btn btn-outline-light  py-2 " type="submit">Sign Up</button>
-</div>
-                    <p class="mt-5 mb-3 text-white">&copy; Stop Shop</p>
-                </form>
+                            <button class="btn btn-outline-light  py-2 " type="submit">Sign Up</button>
+                            <a href="/shop/login" class="text-decoration-none text-light">
+                                <button type="button" class="btn btn-outline-light">Already
+                                    have an account? login
+                                </button>
+                            </a>
+
+                        </div>
+                        <p class="mt-5 mb-3 text-white">&copy; Stop Shop</p>
+                    </form>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
     <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -190,10 +202,10 @@
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (() => {
             'use strict'
-    
+
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
             const forms = document.querySelectorAll('.validated-form')
-    
+
             // Loop over them and prevent submission
             //   this a way of turning something into array
             Array.from(forms)
@@ -203,7 +215,7 @@
                             event.preventDefault()
                             event.stopPropagation()
                         }
-    
+
                         form.classList.add('was-validated')
                     }, false)
                 })
