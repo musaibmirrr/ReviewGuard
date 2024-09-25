@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import Product
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -47,9 +48,10 @@ def allorders(req):
     else:
         return redirect('/reviewGuard/login')
 
-def users(req):
+def view_users(req):
     if req.user.is_authenticated  and req.user.is_superuser:
-        return render(req, 'users.html')
+        users = User.objects.all()
+        return render(req, 'view_users.html',{'users' : users})
     else:
         return redirect('/reviewGuard/login')
 

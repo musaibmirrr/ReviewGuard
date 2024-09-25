@@ -3,133 +3,32 @@
 {% block title %}Shop{% endblock title %}
 {% block body %}
 
+{% for product in products %}
 <div class="container my-5">
     <div class="card mb-3 cardstyle" style="max-width: 100 ">
         <div class="row g-0">
             <div class="col-md-4">
-                <a href=""> <img src="../static/images/watch.jpg" class="img-fluid rounded-start" alt="..."></a>
+                <a href=""> <img src= "{{product.image.url}}" class="img-fluid rounded-start" alt="..."></a>
             </div>
             <div class="col-md-8 text-white">
                 <div class="card-body">
                     <a href="/shop/product" class=" text-decoration-none ">
-                        <h2 class="card-title hoverHeader">Fendi Handbag</h2>
+                        <h2 class="card-title hoverHeader">{{product.name}}</h2>
                     </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
+                    <p class="card-text">{{product.description}}</p>
                     <br>
-                    <h4 class="price">$1999</h4><span><span class=" text-white">MRP:</span><span
-                            class="mrp text-white">$2500</span>
+                    <h4 class="price">{{product.price}}</h4><span><span class=" text-white">MRP:</span><span
+                            class="mrp text-white">{{product.mrp}}</span>
                             <br>
                         <p class="card-text"><small>Inclusive of all taxes</small></p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card mb-3 cardstyle" style="max-width: 100 ">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <a href=""> <img src="../static/images/watch.jpg" class="img-fluid rounded-start" alt="..."></a>
-            </div>
-            <div class="col-md-8 text-white">
-                <div class="card-body">
-                    <a href="/shop/product" class=" text-decoration-none ">
-                        <h2 class="card-title ">Fendi Handbag</h2>
-                    </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <br>
-                    <h4 class="price">$1999</h4><span><span class=" text-white">MRP:</span><span
-                            class="mrp text-white">$2500</span>
-                            <br>
-                        <p class="card-text"><small>Inclusive of all taxes</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3 cardstyle" style="max-width: 100 ">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <a href=""> <img src="../static/images/watch.jpg" class="img-fluid rounded-start" alt="..."></a>
-            </div>
-            <div class="col-md-8 text-white">
-                <div class="card-body">
-                    <a href="/shop/product" class=" text-decoration-none ">
-                        <h2 class="card-title ">Fendi Handbag</h2>
-                    </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <br>
-                    <h4 class="price">$1999</h4><span><span class=" text-white">MRP:</span><span
-                            class="mrp text-white">$2500</span>
-                            <br>
-                        <p class="card-text"><small>Inclusive of all taxes</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3 cardstyle" style="max-width: 100 ">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <a href=""> <img src="../static/images/watch.jpg" class="img-fluid rounded-start" alt="..."></a>
-            </div>
-            <div class="col-md-8 text-white">
-                <div class="card-body">
-                    <a href="/shop/product" class=" text-decoration-none ">
-                        <h2 class="card-title ">Fendi Handbag</h2>
-                    </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <br>
-                    <h4 class="price">$1999</h4><span><span class=" text-white">MRP:</span><span
-                            class="mrp text-white">$2500</span>
-                            <br>
-                        <p class="card-text"><small>Inclusive of all taxes</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3 cardstyle" style="max-width: 100 ">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <a href=""> <img src="../static/images/watch.jpg" class="img-fluid rounded-start" alt="..."></a>
-            </div>
-            <div class="col-md-8 text-white">
-                <div class="card-body">
-                    <a href="/shop/product" class=" text-decoration-none ">
-                        <h2 class="card-title ">Fendi Handbag</h2>
-                    </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <br>
-                    <h4 class="price">$1999</h4><span><span class=" text-white">MRP:</span><span
-                            class="mrp text-white">$2500</span>
-                            <br>
-                        <p class="card-text"><small>Inclusive of all taxes</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-3 cardstyle" style="max-width: 100 ">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <a href=""> <img src="../static/images/watch.jpg" class="img-fluid rounded-start" alt="..."></a>
-            </div>
-            <div class="col-md-8 text-white">
-                <div class="card-body">
-                    <a href="/shop/product" class=" text-decoration-none ">
-                        <h2 class="card-title ">Fendi Handbag</h2>
-                    </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <br>
-                    <h4 class="price">$1999</h4><span><span class=" text-white">MRP:</span><span
-                            class="mrp text-white">$2500</span>
-                            <br>
-                        <p class="card-text"><small>Inclusive of all taxes</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </div>
+
+{% endfor %}
+
 
 {% endblock body %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from backendApp.models import Product
 
 # Create your views here.
 
@@ -18,7 +19,11 @@ def index(req):
 
 def catalog(req):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
-        return render(req, 'catalog.html')
+        products = Product.objects.all()
+        context = {'name' : req.user.username,
+                    'products' : products
+                   }         
+        return render(req, 'catalog.html',context)
     else:
         return redirect('/shop/login')
     
@@ -27,21 +32,24 @@ def catalog(req):
 
 def product(req):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
-        return render(req, 'product.html')
+        context = {'name' : req.user.username}
+        return render(req, 'product.html',context)
     else:
         return redirect('/shop/login')
 
 
 def orders(req):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
-        return render(req, 'orders.html')
+        context = {'name' : req.user.username}
+        return render(req, 'orders.html',context)
     else:
         return redirect('/shop/login')
 
 
 def checkout(req):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
-        return render(req, 'checkout.html')
+        context = {'name' : req.user.username}
+        return render(req, 'checkout.html',context)
     else:
         return redirect('/shop/login')
 

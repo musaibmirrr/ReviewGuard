@@ -1,0 +1,36 @@
+{% extends "boilerplate.html" %}
+
+{% block title %}Orders{% endblock title %}
+
+{% block body %}
+
+<div class="container bg-dark my-5 ">
+    <h2 class=" text-center p-2 text-white fw-bold">USERS</h2>
+            <div class="table-responsive mx-0 fw-normal bg-dark">
+                <table class="table table-dark">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">USERNAME</th>
+                        <th scope="col">isADMIN</th>
+                        <th scope="col">DATE JOINED</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for user in users %}
+                        <tr>
+                          <td>{{ user.id }}</td>
+                          <td>{{ user.username }}</td>
+                          <td>{{ user.is_superuser }}</td>
+                          <td>{{ user.date_joined }}</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    
+
+
+{% endblock body %}
+
