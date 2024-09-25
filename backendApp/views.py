@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Product
 from django.contrib import messages
 from django.contrib.auth.models import User
+from shop.models import Order
 
 # Create your views here.
 
@@ -44,13 +45,15 @@ def addproducts(req):
 
 def allorders(req):
     if req.user.is_authenticated  and req.user.is_superuser:
-        return render(req, 'allorders.html')
+        orders = Order.objects.all() 
+        context = {'orders' : orders}
+        return render(req, 'allorders.html',context)
     else:
         return redirect('/reviewGuard/login')
 
 def view_users(req):
     if req.user.is_authenticated  and req.user.is_superuser:
-        users = User.objects.all()
+        users = User.objects.all()   
         return render(req, 'view_users.html',{'users' : users})
     else:
         return redirect('/reviewGuard/login')
