@@ -2,82 +2,25 @@
 {% block title %} Orders{% endblock title %}
 {% block body %}
 <div class="row">
-  <div class="col-3">
-    <div class="card my-5 mx-5 cardstyle " style="width: 18rem;">
-      <div class="card-body">
-        <h3 class="card-title text-white">Order Details</h3><br>
-        <a href="" class="text-decoration-none" > <h5 class="card-subtitle mb-2 text-primary ">Watch</h5></a>
-       
-        <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <p class="card-text text-white">Address - khanyar</p>
-        <p class="card-text text-white">State - jammu and kashmir</p>
-        <p class="card-text text-white">City - srinagar</p>
-        <p class="card-text text-white">Contact - 123456789</p>
-        <p class="card-text  text-success">Order Total - $1999</p>
-       
-      </div>
-      
-    </div>
-
-    
+{% for order in orders %}
+<div class="col-3">
+  <div class="card my-5 mx-5 cardstyle " style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title text-white">Order Details</h3><br>
+      <a href="" class="text-decoration-none" > <h5 class="card-subtitle mb-2 text-primary ">{{order.product.name}}</h5></a>
+     
+      <p class="card-text text-white">{{ order.product.description }}</p>
+      <p class="card-text text-white">Address - {{ order.address }}</p>
+      <p class="card-text text-white">State - {{ order.state }}</p>
+      <p class="card-text text-white">City - {{ order.city }}</p>
+      <p class="card-text  text-success">Order Total - {{order.product.price}}</p>
+   
+    </div>    
   </div>
-  <div class="col-3">
-    <div class="card my-5 mx-5 cardstyle " style="width: 18rem;">
-      <div class="card-body">
-        <h3 class="card-title text-white">Order Details</h3><br>
-        <a href="" class="text-decoration-none" > <h5 class="card-subtitle mb-2 text-primary ">Watch</h5></a>
-       
-        <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <p class="card-text text-white">Address - khanyar</p>
-        <p class="card-text text-white">State - jammu and kashmir</p>
-        <p class="card-text text-white">City - srinagar</p>
-        <p class="card-text text-white">Contact - 123456789</p>
-        <p class="card-text  text-success">Order Total - $1999</p>
-       
-      </div>
-      
-    </div>
+</div> 
+{% endfor %}
+   
 
-
-  </div>
-  <div class="col-3">
-    <div class="card my-5 mx-5 cardstyle " style="width: 18rem;">
-      <div class="card-body">
-        <h3 class="card-title text-white">Order Details</h3><br>
-        <a href="" class="text-decoration-none" > <h5 class="card-subtitle mb-2 text-primary ">Watch</h5></a>
-       
-        <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <p class="card-text text-white">Address - khanyar</p>
-        <p class="card-text text-white">State - jammu and kashmir</p>
-        <p class="card-text text-white">City - srinagar</p>
-        <p class="card-text text-white">Contact - 123456789</p>
-        <p class="card-text  text-success">Order Total - $1999</p>
-       
-      </div>
-      
-    </div>
-
-
-  </div>
-  <div class="col-3">
-    <div class="card my-5 mx-5 cardstyle " style="width: 18rem;">
-      <div class="card-body">
-        <h3 class="card-title text-white">Order Details</h3><br>
-        <a href="" class="text-decoration-none" > <h5 class="card-subtitle mb-2 text-primary ">Watch</h5></a>
-       
-        <p class="card-text text-white">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <p class="card-text text-white">Address - khanyar</p>
-        <p class="card-text text-white">State - jammu and kashmir</p>
-        <p class="card-text text-white">City - srinagar</p>
-        <p class="card-text text-white">Contact - 123456789</p>
-        <p class="card-text  text-success">Order Total - $1999</p>
-       
-      </div>
-      
-    </div>
-
-
-  </div>
 </div>
 
 

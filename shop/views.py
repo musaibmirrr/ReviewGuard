@@ -3,56 +3,70 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from backendApp.models import Product
-
+from shop.models import Order
 # Create your views here.
 
 
 def index(req):
-    
+
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
-        context = {'name' : req.user.username}
-        return render(req, 'index.html',context)
+        context = {'name': req.user.username}
+        return render(req, 'index.html', context)
     else:
         return redirect('/shop/login')
-
 
 
 def catalog(req):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
         products = Product.objects.all()
-        context = {'name' : req.user.username,
-                    'products' : products
-                   }         
-        return render(req, 'catalog.html',context)
+        context = {'name': req.user.username,
+                   'products': products
+                   }
+        return render(req, 'catalog.html', context)
     else:
         return redirect('/shop/login')
-    
-
 
 
 def product_detail(req, id):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
         product = get_object_or_404(Product, id=id)
-        context = {'name' : req.user.username,
-                   'product' : product
+        context = {'name': req.user.username,
+                   'product': product
                    }
-        return render(req, 'product_detail.html',context)
+        return render(req, 'product_detail.html', context)
     else:
         return redirect('/shop/login')
 
 
 def orders(req):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
-        context = {'name' : req.user.username}
-        return render(req, 'orders.html',context)
+        user_orders = Order.objects.filter(user=req.user)
+        context = {'name': req.user.username,
+                   'orders' : user_orders}
+        return render(req, 'orders.html', context)
     else:
         return redirect('/shop/login')
 
 
-def checkout(req):
+def checkout(req,id):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
-        context = {'name' : req.user.username}
-        return render(req, 'checkout.html',context)
+        product = get_object_or_404(Product, id=id)
+
+        if req.method == 'POST':
+            address = req.POST.get('address')
+            city = req.POST.get('city')
+            state = req.POST.get('state')
+            landmark = req.POST.get('landmark')
+            payment = req.POST.get('payment')
+
+            order = Order(user=req.user, product=product, address=address,city=city, state=state, landmark=landmark,payment=payment)
+            order.save()
+            messages.success(req,"Your order has been placed successfully!")
+            return redirect('/shop/orders')
+        
+        context = {'name': req.user.username,
+                   'product' : product}
+        return render(req, 'checkout.html', context)
     else:
         return redirect('/shop/login')
 

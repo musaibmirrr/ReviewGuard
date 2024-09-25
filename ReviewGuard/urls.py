@@ -29,7 +29,7 @@ urlpatterns = [
     path('',shopview.index),
     path('shop/',shopview.catalog),
     path('shop/product/<int:id>/',shopview.product_detail),
-    path('orders/',shopview.orders),
+    path('shop/orders/',shopview.orders),
     path('shop/product/<int:id>/checkout/',shopview.checkout),
     path('shop/register/',shopview.user_register),
     path('shop/login/',shopview.user_login),
