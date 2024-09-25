@@ -65,10 +65,13 @@ def admin_login(req):
 
     return render(req, 'admin_login.html')
 
-
-def user_logout(req):
+@login_required
+def admin_logout(req):
     if (req.method == 'POST'):
         logout(req)
         messages.success(req, 'You have signed out!')
         return redirect('/reviewGuard/login')
+    messages.error(req,'Cannot proceed that request!')
+    return redirect('/reviewGuard')
+    
     # Redirect to login after logging out
