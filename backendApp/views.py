@@ -60,7 +60,7 @@ def admin_login(req):
             return redirect('/reviewGuard')
         else:
             # Invalid login credentials
-            messages.error(req, 'Ye toh pata hi tha!')
+            messages.error(req, 'Invalid username or password')
             return redirect('/reviewGuard/login')
 
     return render(req, 'admin_login.html')
@@ -69,6 +69,6 @@ def admin_login(req):
 def user_logout(req):
     if (req.method == 'POST'):
         logout(req)
-        messages.success(req, 'Goodbye admin!')
+        messages.success(req, 'You have signed out!')
         return redirect('/reviewGuard/login')
     # Redirect to login after logging out
