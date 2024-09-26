@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import Product
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 
 
 # Create your views here.
@@ -24,10 +26,11 @@ def addproducts(req):
         description = req.POST.get('description')
         price = req.POST.get('price')
         mrp = req.POST.get('mrp')
-        image = req.POST.get('image')
+        image = req.FILES.get('image')
         product = Product(name=name, description=description,
                           price=price, mrp=mrp, image=image)
         product.save()
+        messages.success(req, 'Product added successfully!')
         return redirect('/reviewGuard/viewproducts')
     return render(req, 'addproducts.html')
 
@@ -42,8 +45,8 @@ def users(req):
     return render(req, 'users.html')
 
 
-def dash_login(req):
-    if req.method == 'POST':
+def admin_login(req):
+    if (req.method == 'POST'):
         username = req.POST.get('username')
         password = req.POST.get('password')
         # authentication
@@ -52,16 +55,20 @@ def dash_login(req):
         if user is not None:
             # Log the user in and redirect to a protected page (like admin dashboard)
             login(req, user)
+            messages.success(req, 'Welcome back admin!')
             # Replace with your desired redirect URL
             return redirect('/reviewGuard')
         else:
             # Invalid login credentials
+            messages.error(req, 'Invalid username or password')
             return redirect('/reviewGuard/login')
 
-    return render(req, 'login.html')
+    return render(req, 'admin_login.html')
 
 
 def user_logout(req):
-    logout(req)
+    if (req.method == 'POST'):
+        logout(req)
+        messages.success(req, 'You have signed out!')
+        return redirect('/reviewGuard/login')
     # Redirect to login after logging out
-    return redirect('/reviewGuard/login')

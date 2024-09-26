@@ -4,14 +4,13 @@
 
 {% block body  %}
 
-
 <div class="container my-5 py-4 px-0 bg-dark " >
     <div class="container my-2 py-2 bg-dark ">
     <h1    class="text-white text-center"   style="font-family: 'monospace', sans-serif;">
         ADD PRODUCT
     </h1>
     <br>
-    <form method="POST" action="/reviewGuard/addproducts" novalidate class="row g-3 validated-form">
+    <form method="POST" action="/reviewGuard/addproducts" novalidate class="row g-3 validated-form" enctype="multipart/form-data">
       {% csrf_token %}
         <br>
         <div class="col-6 offset-3  fs-5">

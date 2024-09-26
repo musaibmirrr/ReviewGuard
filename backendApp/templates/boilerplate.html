@@ -96,12 +96,24 @@
            
           </ul>
          
-           
+           <form action="/reviewGuard/signout" method="POST">
+              {% csrf_token %}
             <button class="btn btn-outline-light" type="submit">Sign Out</button>
+          </form>
           
         </div>
       </div>
     </nav>
+
+    {% if messages%}
+        <div class="alert alert-light alert-dismissible fade show" role="alert">
+          {% for message in messages  %}
+              {{message}}
+          {% endfor %}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endif %}
+
  {% block body %}{% endblock body %}
     <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

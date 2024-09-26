@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as message_constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -136,9 +137,10 @@ STATICFILES_DIRS=[
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR/'/media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # LOGIN_URL = '/reviewGuard/login'  # URL where users will be redirected to log in
 # LOGIN_REDIRECT_URL = '/reviewGuard'  # Redirect after successful login
 
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

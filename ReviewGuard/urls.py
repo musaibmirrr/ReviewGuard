@@ -32,7 +32,7 @@ urlpatterns = [
     path('orders/',shopview.orders),
     path('checkout/',shopview.checkout),
     path('register/',shopview.register),
-    path('login/',shopview.login),
+    path('login/',shopview.user_login),
 
 
     #backend routes
@@ -43,7 +43,8 @@ urlpatterns = [
      
      path('reviewGuard/orders',backendview.allorders),
      path('reviewGuard/users',backendview.users),
-     path('reviewGuard/login',backendview.dash_login),
+     path('reviewGuard/login',backendview.admin_login),
+     path('reviewGuard/signout',backendview.user_logout)
 ]
 
 if settings.DEBUG:
