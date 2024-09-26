@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from backendApp.models import Product
 from shop.models import Order,Review
+from textblob import TextBlob
 
 #utility function to get ip of client
 def get_client_ip(request):
@@ -44,23 +45,50 @@ def product_detail(req, id):
 
             #ip code
             ipAddress = get_client_ip(req)
-
             review_count = Review.objects.filter(ipAddress=ipAddress, product=product).count()
             ipCount = review_count + 1
 
+            #text blob code
+            blob = TextBlob(body)
+            polarity = blob.sentiment.polarity
+            subjectivity = blob.sentiment.subjectivity
+
+            # check if the review is overly positive (fake) or overly negative (suspicious)
+            
+            if polarity > 0.9:
+                if subjectivity <= 0.5:
+                    isFake = False
+                else:
+                    isFake = True
+                    messages.error(req, "Your review seems suspicious.")
+            elif polarity < -0.5:
+                 if subjectivity <= 0.5:
+                    isFake = False
+                 else:
+                    isFake = True
+                    messages.error(req, "Your review seems suspicious.")
+            else:
+                isFake = False
+
+
             if review_count > 2:
                 messages.error(req, "You have already submitted 3 reviews for this product. Thank you.")
-                review = Review(user=req.user,product=product,rating=rating,body=body,ipAddress=ipAddress,ipCount=ipCount)
+                review = Review(user=req.user,product=product,rating=rating,body=body,ipAddress=ipAddress,ipCount=ipCount,subjectivity=subjectivity,polarity=polarity,isFake=isFake)
                 review.save()
                 return redirect(f'/shop/product/{id}')
-            
-            
-            review = Review(user=req.user,product=product,rating=rating,body=body,ipAddress=ipAddress,ipCount=ipCount)
+
+            review = Review(user=req.user,product=product,rating=rating,body=body,ipAddress=ipAddress,ipCount=ipCount,subjectivity=subjectivity,polarity=polarity,isFake=isFake)
             review.save()
             messages.success(req,"You successfully made a review!")
             return redirect(f'/shop/product/{id}')
-
-        reviews = product.reviews.filter(ipCount__lte=3)
+        
+        # reviews = Review.objects.filter(product=product,isFake= False,ipCount__lte=3)
+        all_reviews = Review.objects.filter(product=product)
+        reviews = []
+        for review in all_reviews:
+            if review.isFake is False and review.ipCount <= 3:
+                reviews.append(review)   
+        
         context = {'name': req.user.username,
                    'product': product,
                    'reviews' : reviews
