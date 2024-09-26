@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from backendApp.models import Product
-from shop.models import Order
+from shop.models import Order,Review
 # Create your views here.
 
 
@@ -30,8 +30,18 @@ def catalog(req):
 def product_detail(req, id):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
         product = get_object_or_404(Product, id=id)
+        if(req.method == 'POST'):
+            rating = req.POST.get('rating')
+            body = req.POST.get('body')
+            review = Review(user=req.user,product=product,rating=rating,body=body)
+            review.save()
+            messages.success(req,"You successfully made a review!")
+            return redirect(f'/shop/product/{id}')
+
+        reviews = product.reviews.all()
         context = {'name': req.user.username,
-                   'product': product
+                   'product': product,
+                   'reviews' : reviews
                    }
         return render(req, 'product_detail.html', context)
     else:
@@ -99,10 +109,15 @@ def user_login(req):
         # Authenticate the user
         user = authenticate(req, username=username, password=password)
         if user is not None:
+           if(not user.is_superuser): 
             login(req, user)
             messages.success(req, "Login successful.")
             # Redirect to dashboard or wherever you like
             return redirect('/')
+           else:
+            messages.error(req,"You are not a user!")
+            return redirect('/shop/login')
+
         else:
             messages.error(req, "Invalid username or password!")
             return redirect('/shop/login')

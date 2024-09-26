@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block title %} Orders{% endblock title %}
 {% block body %}
+<h3 class="card-title text-white text-center py-2">ORDER DETAILS</h3>
 <div class="row">
 {% for order in orders %}
 <div class="col-3">
   <div class="card my-5 mx-5 cardstyle " style="width: 18rem;">
     <div class="card-body">
-      <h3 class="card-title text-white">Order Details</h3><br>
-      <a href="" class="text-decoration-none" > <h5 class="card-subtitle mb-2 text-primary ">{{order.product.name}}</h5></a>
+      <h4 class="card-title text-white">{{order.product.name}}</h4>
+      <a href="/shop/product/{{order.product.id}}/" class="text-decoration-none" >
+      <button class="btn btn-outline-light my-4">go to product</button>
+      </a>
      
       <p class="card-text text-white">{{ order.product.description }}</p>
       <p class="card-text text-white">Address - {{ order.address }}</p>

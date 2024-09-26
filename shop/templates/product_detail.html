@@ -35,7 +35,8 @@
         <div class="col-6">
             <h2 class="text-white fw-bold"> Leave a Review</h2>
             <br>
-            <form class="mb-3 validated-form " novalidate>
+            <form class="mb-3 validated-form" method="POST" action="/shop/product/{{product.id}}/" novalidate>
+                {% csrf_token %}
                 <div>
                     <fieldset class="starability-coinFlip">
                         <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked
@@ -54,7 +55,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label col-6 fs-5 text-white" for="body">Review</label>
-                    <textarea name="reviewbody" id="body" class="form-control" cols="30" rows="3" required></textarea>
+                    <textarea name="body" id="body" class="form-control" cols="30" rows="3" required></textarea>
 
                     <div class="invalid-feedback">
                         Review can't be empty!
@@ -66,70 +67,26 @@
         </div>
 
         <div class="row">
+            {% for review in reviews %}
             <div class="col-6">
                 <div class="card mb-3 my-5">
                     <div class="card-body">
 
                         <h4 class="card-title">
-                            @hazim <span class="text-muted fs-6">(verified)</span>
+                            @{{review.user.username}} <span class="text-muted fs-6">(verified)</span>
                         </h4>
-                        <p class="starability-result" data-rating="3">
+                        <p class="starability-result" data-rating="{{review.rating}}">
                             Rated: 3 stars
                         </p>
                         <p class="card-text">
-                            Good Product!
+                            {{review.body}}
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="card mb-3 my-5">
-                    <div class="card-body">
-
-                        <h4 class="card-title">
-                            @hazim <span class="text-muted fs-6">(verified)</span>
-                        </h4>
-                        <p class="starability-result" data-rating="3">
-                            Rated: 3 stars
-                        </p>
-                        <p class="card-text">
-                            Good Product!
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="card mb-3 my-5">
-                    <div class="card-body">
-
-                        <h4 class="card-title">
-                            @hazim <span class="text-muted fs-6">(verified)</span>
-                        </h4>
-                        <p class="starability-result" data-rating="3">
-                            Rated: 3 stars
-                        </p>
-                        <p class="card-text">
-                            Good Product!
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="card mb-3 my-5">
-                    <div class="card-body">
-
-                        <h4 class="card-title">
-                            @hazim <span class="text-muted fs-6">(verified)</span>
-                        </h4>
-                        <p class="starability-result" data-rating="3">
-                            Rated: 3 stars
-                        </p>
-                        <p class="card-text">
-                            Good Product!
-                        </p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+            
+            
         </div>
     </div>
 </div>

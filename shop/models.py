@@ -16,3 +16,12 @@ class Order(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+    body = models.TextField()
+
+    def __str__(self):
+        return self.user.username
