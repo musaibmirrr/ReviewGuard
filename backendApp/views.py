@@ -3,14 +3,18 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Product
 from django.contrib import messages
 from django.contrib.auth.models import User
-from shop.models import Order
+from shop.models import Order,Review
 
 # Create your views here.
 
 
 def index(req):
     if req.user.is_authenticated and req.user.is_superuser:
-        return render(req, 'dashboard.html')
+        reviews = Review.objects.all()
+        context = {
+            'reviews' : reviews
+        }
+        return render(req, 'dashboard.html',context)
     else:
         return redirect('/reviewGuard/login')
 
@@ -71,7 +75,7 @@ def admin_login(req):
           if(user.is_superuser):
             # Log the user in and redirect to a protected page (like admin dashboard)
             login(req, user)
-            messages.success(req, 'Welcome back admin!')
+            messages.success(req, f'Welcome back, {req.user.username}')
             # Replace with your desired redirect URL
             return redirect('/reviewGuard')
           else:
