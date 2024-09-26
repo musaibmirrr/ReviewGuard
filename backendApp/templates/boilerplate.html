@@ -81,7 +81,7 @@
               <a class="nav-link" href="/reviewGuard/orders">Orders</a>
             </li>
             <li class="nav-item navstyle">
-              <a class="nav-link" href="/reviewGuard/users">Users</a>
+              <a class="nav-link" href="/reviewGuard/view_users">Users</a>
             </li>
             <li class="nav-item dropdown navstyle">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -105,14 +105,8 @@
       </div>
     </nav>
 
-    {% if messages%}
-        <div class="alert alert-light alert-dismissible fade show" role="alert">
-          {% for message in messages  %}
-              {{message}}
-          {% endfor %}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      {% endif %}
+    {% include 'partials/flash.html' %}
+    
 
  {% block body %}{% endblock body %}
     <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

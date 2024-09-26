@@ -10,17 +10,15 @@
   <meta name="generator" content="Hugo 0.122.0">
 
   <title> {% block title %}{% endblock title%} </title>
-  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
   <!-- bootsrap css code from site -->
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/product/">
-
-
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-  <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  {% comment %} <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> {% endcomment %}
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -160,15 +158,10 @@
 
 
   <!-- Custom styles for this template -->
-  <link href="product.css" rel="stylesheet">
-  <link rel="stylesheet" href="../static/css/star.css">
-
-
+  {% comment %} <link href="product.css" rel="stylesheet"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/star.css' %}">
 
 </head>
-
-
-
 
 <body>
 
@@ -216,19 +209,31 @@
 
             <li class="nav-item"><a class="nav-link text-light fs-5" href="/shop">Shop</a></li>
 
-            <li class="nav-item"><a class="nav-link text-light fs-5" href="/orders">Orders</a></li>
+            <li class="nav-item"><a class="nav-link text-light fs-5" href="/shop/orders">Orders</a></li>
             <li class="nav-item"><a class="nav-link text-light fs-5" href="/aboutus">About us</a></li>
 
             <li class="nav-item ">
               <div class="dropdown">
                 <button class="btn btn-outline-light dropdown-toggle my-2" type="button" id="dropdownMenuButton1"
                   data-bs-toggle="dropdown" aria-expanded="false">
+                  {% if user.is_authenticated %}
+                  {{name}}
+                  {% endif %}
+                  {% if not user.is_authenticated  %}
                   User
+                  {% endif %}
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="/register">Register</a></li>
-                  <li><a class="dropdown-item" href="/login">Login</a></li>
-                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                  
+                  {% if  user.is_authenticated %}
+                  <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
+                  {% endif %}
+                  
+                  {% if not user.is_authenticated  %}
+                  <li><a class="dropdown-item" href="/shop/register">Register</a></li>
+                  <li><a class="dropdown-item" href="/shop/login">Login</a></li>
+                  {% endif %}
+                  
                 </ul>
               </div>
             </li>
@@ -239,18 +244,9 @@
     </div>
   </nav>
 
-
-
-
-
+  {% include 'partials/flash.html' %}
 
   {% block body %}{% endblock body %}
-
-
-
-
-
-
 
   <br>
   <footer class=" py-5  text-white text-center foot">
@@ -298,6 +294,9 @@
       </div>
     </div>
   </footer>
+
+ 
+  
   <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
@@ -306,7 +305,7 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> 
 
 </body>
 

@@ -2,25 +2,26 @@
 
 {% block title %}Shop{% endblock title %}
 {% block body %}
+
+
 <div class="container my-5">
     <div class="card mb-3 cardstyle" style="max-width: 100 ">
         <div class="row g-0">
             <div class="col-md-4">
-                <a href=""> <img src="../static/images/watch.jpg" class="img-fluid rounded-start" alt="..."></a>
+                <a href=""> <img src="{{product.image.url}}" class="img-fluid rounded-start" alt="..."></a>
             </div>
             <div class="col-md-8 text-white">
                 <div class="card-body">
                     <a href="/shop/product" class=" text-decoration-none ">
-                        <h2 class="card-title ">Fendi Handbag</h2>
+                        <h2 class="card-title ">{{product.name}}</h2>
                     </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
+                    <p class="card-text">{{product.description}}</p>
                     <br>
-                    <h4 class="price">$1999</h4><span><span class=" text-white">MRP:</span><span
-                            class="mrp text-white">$2500</span>
+                    <h4 class="price">{{product.price}}</h4><span><span class=" text-white">MRP:</span><span
+                            class="mrp text-white">{{product.mrp}}</span>
                         <br>
                         <p class="card-text"><small>Inclusive of all taxes</small></p>
-                        <a href="/checkout">
+                        <a href="/shop/product/{{product.id}}/checkout">
                             <button class="btn btn-lg btn-outline-light">Buy Now</button>
                         </a>
                 </div>
@@ -34,7 +35,8 @@
         <div class="col-6">
             <h2 class="text-white fw-bold"> Leave a Review</h2>
             <br>
-            <form class="mb-3 validated-form " novalidate>
+            <form class="mb-3 validated-form" method="POST" action="/shop/product/{{product.id}}/" novalidate>
+                {% csrf_token %}
                 <div>
                     <fieldset class="starability-coinFlip">
                         <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked
@@ -53,7 +55,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label col-6 fs-5 text-white" for="body">Review</label>
-                    <textarea name="reviewbody" id="body" class="form-control" cols="30" rows="3" required></textarea>
+                    <textarea name="body" id="body" class="form-control" cols="30" rows="3" required></textarea>
 
                     <div class="invalid-feedback">
                         Review can't be empty!
@@ -65,70 +67,26 @@
         </div>
 
         <div class="row">
+            {% for review in reviews %}
             <div class="col-6">
                 <div class="card mb-3 my-5">
                     <div class="card-body">
 
                         <h4 class="card-title">
-                            @hazim <span class="text-muted fs-6">(verified)</span>
+                            @{{review.user.username}} <span class="text-muted fs-6">(verified)</span>
                         </h4>
-                        <p class="starability-result" data-rating="3">
+                        <p class="starability-result" data-rating="{{review.rating}}">
                             Rated: 3 stars
                         </p>
                         <p class="card-text">
-                            Good Product!
+                            {{review.body}}
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="card mb-3 my-5">
-                    <div class="card-body">
-
-                        <h4 class="card-title">
-                            @hazim <span class="text-muted fs-6">(verified)</span>
-                        </h4>
-                        <p class="starability-result" data-rating="3">
-                            Rated: 3 stars
-                        </p>
-                        <p class="card-text">
-                            Good Product!
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="card mb-3 my-5">
-                    <div class="card-body">
-
-                        <h4 class="card-title">
-                            @hazim <span class="text-muted fs-6">(verified)</span>
-                        </h4>
-                        <p class="starability-result" data-rating="3">
-                            Rated: 3 stars
-                        </p>
-                        <p class="card-text">
-                            Good Product!
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="card mb-3 my-5">
-                    <div class="card-body">
-
-                        <h4 class="card-title">
-                            @hazim <span class="text-muted fs-6">(verified)</span>
-                        </h4>
-                        <p class="starability-result" data-rating="3">
-                            Rated: 3 stars
-                        </p>
-                        <p class="card-text">
-                            Good Product!
-                        </p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+            
+            
         </div>
     </div>
 </div>
