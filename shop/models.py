@@ -22,6 +22,8 @@ class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.IntegerField()
     body = models.TextField()
+    ipAddress = models.GenericIPAddressField(default='127.0.0.1')
+    ipCount = models.IntegerField(default=1)
 
     def __str__(self):
         return self.user.username

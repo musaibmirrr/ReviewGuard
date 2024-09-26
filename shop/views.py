@@ -4,9 +4,17 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from backendApp.models import Product
 from shop.models import Order,Review
+
+#utility function to get ip of client
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
 # Create your views here.
-
-
 def index(req):
 
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
@@ -33,12 +41,26 @@ def product_detail(req, id):
         if(req.method == 'POST'):
             rating = req.POST.get('rating')
             body = req.POST.get('body')
-            review = Review(user=req.user,product=product,rating=rating,body=body)
+
+            #ip code
+            ipAddress = get_client_ip(req)
+
+            review_count = Review.objects.filter(ipAddress=ipAddress, product=product).count()
+            ipCount = review_count + 1
+
+            if review_count > 2:
+                messages.error(req, "You have already submitted 3 reviews for this product. Thank you.")
+                review = Review(user=req.user,product=product,rating=rating,body=body,ipAddress=ipAddress,ipCount=ipCount)
+                review.save()
+                return redirect(f'/shop/product/{id}')
+            
+            
+            review = Review(user=req.user,product=product,rating=rating,body=body,ipAddress=ipAddress,ipCount=ipCount)
             review.save()
             messages.success(req,"You successfully made a review!")
             return redirect(f'/shop/product/{id}')
 
-        reviews = product.reviews.all()
+        reviews = product.reviews.filter(ipCount__lte=3)
         context = {'name': req.user.username,
                    'product': product,
                    'reviews' : reviews
