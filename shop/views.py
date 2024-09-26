@@ -39,6 +39,8 @@ def catalog(req):
 def product_detail(req, id):
     if ((req.user.is_authenticated) and (not req.user.is_superuser)):
         product = get_object_or_404(Product, id=id)
+        isVerified = False       
+        
         if(req.method == 'POST'):
             rating = req.POST.get('rating')
             body = req.POST.get('body')
@@ -53,36 +55,48 @@ def product_detail(req, id):
             polarity = blob.sentiment.polarity
             subjectivity = blob.sentiment.subjectivity
 
-            # check if the review is overly positive (fake) or overly negative (suspicious)
+             #isVerified check
+            orders = Order.objects.filter(user=req.user)
+            for order in orders:
+                if order.product.id == id:
+                    isVerified = True 
+            
             
             if polarity > 0.9:
                 if subjectivity <= 0.5:
-                    isFake = False
+                    isFake = False    
                 else:
-                    isFake = True
-                    messages.error(req, "Your review seems suspicious.")
+                    if (isVerified):
+                        isFake = False
+                    else:    
+                        isFake = True
+                        messages.error(req, "Your review seems suspicious.")
             elif polarity < -0.5:
                  if subjectivity <= 0.5:
                     isFake = False
                  else:
-                    isFake = True
-                    messages.error(req, "Your review seems suspicious.")
+                    if(isVerified):
+                       isFake = False
+                    else:
+                        isFake = True
+                        messages.error(req, "Your review seems suspicious.")
             else:
                 isFake = False
 
 
             if review_count > 2:
                 messages.error(req, "You have already submitted 3 reviews for this product. Thank you.")
-                review = Review(user=req.user,product=product,rating=rating,body=body,ipAddress=ipAddress,ipCount=ipCount,subjectivity=subjectivity,polarity=polarity,isFake=isFake)
+                review = Review(user=req.user,product=product,rating=rating,body=body,ipAddress=ipAddress,ipCount=ipCount,subjectivity=subjectivity,polarity=polarity,isFake=isFake,isVerified=isVerified)
                 review.save()
                 return redirect(f'/shop/product/{id}')
 
-            review = Review(user=req.user,product=product,rating=rating,body=body,ipAddress=ipAddress,ipCount=ipCount,subjectivity=subjectivity,polarity=polarity,isFake=isFake)
+            
+            review = Review(user=req.user,product=product,rating=rating,body=body,ipAddress=ipAddress,ipCount=ipCount,subjectivity=subjectivity,polarity=polarity,isFake=isFake,isVerified=isVerified)
             review.save()
             messages.success(req,"You successfully made a review!")
             return redirect(f'/shop/product/{id}')
         
-        # reviews = Review.objects.filter(product=product,isFake= False,ipCount__lte=3)
+        
         all_reviews = Review.objects.filter(product=product)
         reviews = []
         for review in all_reviews:

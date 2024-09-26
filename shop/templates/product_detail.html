@@ -73,7 +73,12 @@
                     <div class="card-body">
 
                         <h4 class="card-title">
-                            @{{review.user.username}} <span class="text-muted fs-6">(verified)</span>
+                            @{{review.user.username}}
+                            {% if review.isVerified %} 
+                            <span class="text-muted fs-6">
+                                (Verified)
+                            </span>
+                            {% endif %}
                         </h4>
                         <p class="starability-result" data-rating="{{review.rating}}">
                             Rated: 3 stars
