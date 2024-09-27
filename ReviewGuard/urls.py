@@ -20,16 +20,15 @@ from shop import views as shopview
 from backendApp import views as backendview
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
 
-def csrf_failure(request, reason=""):
-    return HttpResponse(f'CSRF Failure: {reason}', status=403)
+
+
+
 
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path('csrf-debug/', csrf_exempt(csrf_failure)),
+    
     #frontend routes
     path('',shopview.index),
     path('shop/',shopview.catalog),
@@ -39,6 +38,7 @@ urlpatterns = [
     path('shop/register/',shopview.user_register),
     path('shop/login/',shopview.user_login),
     path('shop/logout/',shopview.user_logout),
+    path('shop/aboutus/',shopview.aboutus),
 
 
     #backend routes
