@@ -24,3 +24,11 @@ class MultiAppSessionMiddleware(MiddlewareMixin):
             elif request.path.startswith('/reviewGuard/'):
                 response.set_cookie('admin_sessionid', request.session.session_key, httponly=True)
         return response
+
+
+
+
+
+
+
+
