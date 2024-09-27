@@ -196,3 +196,9 @@ def user_logout(req):
     logout(req)
     messages.success(req, "You have been logged out.")
     return redirect('/shop/login')
+
+def aboutus(req):
+   context={
+      'name': req.user.username,
+   }
+   return render(req,'aboutus.html',context)

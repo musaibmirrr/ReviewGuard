@@ -22,9 +22,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
+
+
 urlpatterns = [
 
     path('admin/', admin.site.urls),
+    
     #frontend routes
     path('',shopview.index),
     path('shop/',shopview.catalog),
@@ -34,6 +38,7 @@ urlpatterns = [
     path('shop/register/',shopview.user_register),
     path('shop/login/',shopview.user_login),
     path('shop/logout/',shopview.user_logout),
+    path('shop/aboutus/',shopview.aboutus),
 
 
     #backend routes
