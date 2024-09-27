@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'ReviewGuard.urls'
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'ReviewGuard.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'shop/templates',BASE_DIR/'backendApp/templates'],
+        'DIRS': [BASE_DIR/'shop/templates', BASE_DIR/'backendApp/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,8 +128,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS=[
-    BASE_DIR/'shop/static',BASE_DIR/'backendApp/static'
+STATICFILES_DIRS = [
+    BASE_DIR/'shop/static', BASE_DIR/'backendApp/static'
 ]
 
 # Default primary key field type
@@ -140,3 +141,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+
