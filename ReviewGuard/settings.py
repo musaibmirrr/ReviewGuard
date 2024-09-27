@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'ReviewGuard.urls'
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'ReviewGuard.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'shop/templates',BASE_DIR/'backendApp/templates'],
+        'DIRS': [BASE_DIR/'shop/templates', BASE_DIR/'backendApp/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,8 +128,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS=[
-    BASE_DIR/'shop/static',BASE_DIR/'backendApp/static'
+STATICFILES_DIRS = [
+    BASE_DIR/'shop/static', BASE_DIR/'backendApp/static'
 ]
 
 # Default primary key field type
@@ -140,6 +141,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # LOGIN_URL = '/reviewGuard/login'  # URL where users will be redirected to log in
 # LOGIN_REDIRECT_URL = '/reviewGuard'  # Redirect after successful login
 
@@ -147,3 +149,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 =======
 >>>>>>> c29fb2c7f52f1a15a910c16db9a33f01caac09c2
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+=======
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+
+>>>>>>> 49a6e9ee2613f2ee70ef0c8816f11f118dd8726d

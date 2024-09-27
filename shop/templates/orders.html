@@ -4,28 +4,25 @@
 <h3 class="card-title text-white text-center py-2">ORDER DETAILS</h3>
 <div class="row">
 {% for order in orders %}
-<div class="col-3">
-  <div class="card my-5 mx-5 cardstyle " style="width: 18rem;">
-    <div class="card-body">
-      <h4 class="card-title text-white">{{order.product.name}}</h4>
-      <a href="/shop/product/{{order.product.id}}/" class="text-decoration-none" >
-      <button class="btn btn-sm btn-outline-light my-2">Go to product</button>
-      </a>
-     
-      <p class="card-text text-white">{{ order.product.description }}</p>
-      <p class="card-text text-white">Address - {{ order.address }}</p>
-      <p class="card-text text-white">State - {{ order.state }}</p>
-      <p class="card-text text-white">City - {{ order.city }}</p>
-      <p class="card-text  text-success">Order Total - {{order.product.price}}</p>
-   
-    </div>    
+  <div class="col-3">
+    <div class="card my-5 mx-5 cardstyle" style="width: 18rem;">
+      <div class="card-body">
+        <h4 class="card-title text-white">{{order.product.name}}</h4>
+        <a href="/shop/product/{{order.product.id}}/" class="text-decoration-none">
+          <button class="btn btn-sm btn-outline-light my-2">
+            Go to product
+          </button>
+        </a>
+        <p class="card-text text-secondary">{{ order.product.description }}</p>
+        <p class="card-text text-secondary">Address : {{ order.address }}</p>
+        <p class="card-text text-secondary">City : {{ order.city }}</p>
+        <p class="card-text text-secondary">State : {{ order.state }}</p>
+        <p class="card-text  text-success fw-bold">Order Total : {{order.product.price}}</p>
+
+      </div>
+    </div>
   </div>
-</div> 
+
 {% endfor %}
-   
-
 </div>
-
-
-
 {% endblock body %}

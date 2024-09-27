@@ -7,11 +7,6 @@ from shop.models import Order,Review
 
 # Create your views here.
 
-<<<<<<< HEAD
-# @login_required
-=======
-
->>>>>>> c29fb2c7f52f1a15a910c16db9a33f01caac09c2
 def index(req):
     if req.user.is_authenticated and req.user.is_superuser:
         reviews = Review.objects.all()
@@ -23,10 +18,6 @@ def index(req):
         return redirect('/reviewGuard/login')
 
 
-<<<<<<< HEAD
-# @login_required
-=======
->>>>>>> c29fb2c7f52f1a15a910c16db9a33f01caac09c2
 def viewproducts(req):
     if req.user.is_authenticated and req.user.is_superuser:
         products = Product.objects.all()
@@ -35,10 +26,6 @@ def viewproducts(req):
         return redirect('/reviewGuard/login')
 
 
-<<<<<<< HEAD
-# @login_required
-=======
->>>>>>> c29fb2c7f52f1a15a910c16db9a33f01caac09c2
 def addproducts(req):
     if req.user.is_authenticated  and req.user.is_superuser:
         if (req.method == 'POST'):
@@ -59,10 +46,6 @@ def addproducts(req):
 
 
 
-<<<<<<< HEAD
-# @login_required
-=======
->>>>>>> c29fb2c7f52f1a15a910c16db9a33f01caac09c2
 def allorders(req):
     if req.user.is_authenticated  and req.user.is_superuser:
         orders = Order.objects.all() 
@@ -71,19 +54,12 @@ def allorders(req):
     else:
         return redirect('/reviewGuard/login')
 
-<<<<<<< HEAD
-
-# @login_required
-def users(req):
-    return render(req, 'users.html')
-=======
 def view_users(req):
     if req.user.is_authenticated  and req.user.is_superuser:
         users = User.objects.all()   
         return render(req, 'view_users.html',{'users' : users})
     else:
         return redirect('/reviewGuard/login')
->>>>>>> c29fb2c7f52f1a15a910c16db9a33f01caac09c2
 
 
 def admin_login(req):
