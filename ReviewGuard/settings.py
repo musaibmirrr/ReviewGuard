@@ -140,17 +140,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-# LOGIN_URL = '/reviewGuard/login'  # URL where users will be redirected to log in
-# LOGIN_REDIRECT_URL = '/reviewGuard'  # Redirect after successful login
-
-
-=======
->>>>>>> c29fb2c7f52f1a15a910c16db9a33f01caac09c2
-MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-=======
-MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-
-
->>>>>>> 49a6e9ee2613f2ee70ef0c8816f11f118dd8726d

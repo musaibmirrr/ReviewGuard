@@ -6,6 +6,7 @@ from backendApp.models import Product
 from shop.models import Order,Review
 from textblob import TextBlob
 
+
 #utility function to get ip of client
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -17,12 +18,15 @@ def get_client_ip(request):
 
 # Create your views here.
 def index(req):
-
-    if ((req.user.is_authenticated) and (not req.user.is_superuser)):
-        context = {'name': req.user.username}
-        return render(req, 'index.html', context)
+    if (req.user.is_authenticated):
+        if req.user.is_superuser:
+            context = {'name': 'User'}
+            return render(req, 'index.html',context)
+        else:
+            context = {'name': req.user.username}
+            return render(req, 'index.html', context)
     else:
-        return redirect('/shop/login')
+        return render(req, 'index.html')
 
 
 def catalog(req):

@@ -69,7 +69,6 @@ def admin_login(req):
         # authentication
         user = authenticate(req, username=username, password=password)
 
-
         if user is not None:
           if(user.is_superuser):
             # Log the user in and redirect to a protected page (like admin dashboard)

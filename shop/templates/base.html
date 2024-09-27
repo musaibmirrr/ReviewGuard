@@ -226,14 +226,22 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   
                   {% if  user.is_authenticated %}
-                  <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
+                    {% if  not user.is_superuser%}
+                      <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
+                    {% endif %}
                   {% endif %}
-                  
+
                   {% if not user.is_authenticated  %}
                   <li><a class="dropdown-item" href="/shop/register">Register</a></li>
                   <li><a class="dropdown-item" href="/shop/login">Login</a></li>
                   {% endif %}
-                  
+
+                  {% if user.is_authenticated  %}
+                    {% if user.is_superuser%}
+                      <li><a class="dropdown-item" href="/shop/register">Register</a></li>
+                      <li><a class="dropdown-item" href="/shop/login">Login</a></li>
+                    {% endif %}
+                  {% endif %}
                 </ul>
               </div>
             </li>
