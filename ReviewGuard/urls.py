@@ -33,11 +33,12 @@ urlpatterns = [
     #frontend routes
     path('',shopview.index),
     path('shop/',shopview.catalog),
-    path('shop/product',shopview.product),
-    path('orders/',shopview.orders),
-    path('checkout/',shopview.checkout),
-    path('register/',shopview.register),
-    path('login/',shopview.login),
+    path('shop/product/<int:id>/',shopview.product_detail),
+    path('shop/orders/',shopview.orders),
+    path('shop/product/<int:id>/checkout/',shopview.checkout),
+    path('shop/register/',shopview.user_register),
+    path('shop/login/',shopview.user_login),
+    path('shop/logout/',shopview.user_logout),
 
 
     #backend routes
@@ -47,8 +48,9 @@ urlpatterns = [
      path('reviewGuard/addproducts',backendview.addproducts),
      
      path('reviewGuard/orders',backendview.allorders),
-     path('reviewGuard/users',backendview.users),
-     path('reviewGuard/login',backendview.login),
+     path('reviewGuard/view_users',backendview.view_users),
+     path('reviewGuard/login',backendview.admin_login),
+     path('reviewGuard/signout',backendview.admin_logout)
 ]
 
 if settings.DEBUG:

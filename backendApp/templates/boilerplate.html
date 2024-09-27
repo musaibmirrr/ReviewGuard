@@ -81,7 +81,7 @@
               <a class="nav-link" href="/reviewGuard/orders">Orders</a>
             </li>
             <li class="nav-item navstyle">
-              <a class="nav-link" href="/reviewGuard/users">Users</a>
+              <a class="nav-link" href="/reviewGuard/view_users">Users</a>
             </li>
             <li class="nav-item dropdown navstyle">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -96,12 +96,18 @@
            
           </ul>
          
-           
+           <form action="/reviewGuard/signout" method="POST">
+              {% csrf_token %}
             <button class="btn btn-outline-light" type="submit">Sign Out</button>
+          </form>
           
         </div>
       </div>
     </nav>
+
+    {% include 'partials/flash.html' %}
+    
+
  {% block body %}{% endblock body %}
     <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

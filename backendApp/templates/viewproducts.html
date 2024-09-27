@@ -4,45 +4,42 @@
 
 {% block body %}
 
-<div class="container bg-secondary-subtle  my-5 ">
-<h2 class="p-2 "> Products Inventory </h2>
-  
-        <br>
-       
-        <div class="table-responsive mx-0 fw-normal">
-            <table class="table table-striped table-sm fw-normal">
-                <thead>
-                    <tr  class="fw-normal">
 
-                        <!-- <th scope="col">IMAGE</th> -->
+<div class="container bg-dark my-5 ">
+    <h2 class=" text-center fw-bold p-2 text-white">PRODUCTS</h2>
+            <div class="table-responsive mx-0 fw-normal bg-dark">
+                <table class="table table-dark">
+                    <thead>
+                      <tr>
                         <th scope="col">PRODUCT</th>
                         <th scope="col">ID</th>
                         <th scope="col">DESCRIPTION</th>
                         <th scope="col">PRICE</th>
                         <th scope="col">MRP</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    {%for product in products%}
-                    <tr>
-                        <td>{{product.name}}</td>
-                        <td>{{product.id}}</td>
-                        <td>{{product.description}}</td>
-                        <td>{{product.price}}</td>
-                        <td>{{product.mrp}}</td>
-                    </tr>
-                    {%endfor%}
-                    
-
-                </tbody>
-            </table>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {%for product in products%}
+                        <tr>
+                            <td>{{product.name}}</td>
+                            <td>{{product.id}}</td>
+                            <td>{{product.description}}</td>
+                            <td>{{product.price}}</td>
+                            <td>{{product.mrp}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                  </table>
+            </div>
         </div>
-    </div>
 
 
 
 
 
 {% endblock body %}
+
+
+
+
+
