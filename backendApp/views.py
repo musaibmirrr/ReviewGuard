@@ -2,19 +2,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import Product
-<<<<<<< HEAD
-
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_http_methods
-from django.views.decorators.csrf import csrf_protect
-
-@csrf_protect
-@require_http_methods(["GET", "POST"])
-=======
 from django.contrib import messages
 from django.contrib.auth.models import User
 from shop.models import Order,Review
->>>>>>> 49a6e9ee2613f2ee70ef0c8816f11f118dd8726d
 
 # Create your views here.
 
