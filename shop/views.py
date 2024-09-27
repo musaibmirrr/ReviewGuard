@@ -18,12 +18,13 @@ def get_client_ip(request):
 
 # Create your views here.
 def index(req):
+    
     if (req.user.is_authenticated):
-        if req.user.is_superuser:
-            context = {'name': 'User'}
+        if not req.user.is_superuser:
+            context = {'name': req.user.username}
             return render(req, 'index.html',context)
         else:
-            context = {'name': req.user.username}
+            context = {'name': 'User'}
             return render(req, 'index.html', context)
     else:
         return render(req, 'index.html')

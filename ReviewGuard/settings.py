@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    'backendApp.middleware.MultiAppSessionMiddleware',
 ]
 
 ROOT_URLCONF = 'ReviewGuard.urls'
@@ -88,9 +89,24 @@ DATABASES = {
             # 'username': 'your_username',
             # 'password': 'your_password',
         }
+    },
+    'shop_sessions': {
+        'ENGINE': 'djongo',  # Use djongo to store sessions for shop
+        'NAME': 'ShopSessions',
+        'CLIENT': {
+            'host': 'mongodb://localhost:27017/',
+        }
+    },
+    'admin_sessions': {
+        'ENGINE': 'djongo',  # Use djongo to store sessions for reviewGuard/admin
+        'NAME': 'AdminSessions',
+        'CLIENT': {
+            'host': 'mongodb://localhost:27017/',
+        }
     }
 }
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+# SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 
 # Password validation
@@ -141,3 +157,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# For shop app sessions
+SHOP_SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Default DB session engine for shop
+SHOP_SESSION_DB_ALIAS = 'shop_sessions'
+
+# For reviewGuard app sessions
+ADMIN_SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # DB session engine for admin
+ADMIN_SESSION_DB_ALIAS = 'admin_sessions'
