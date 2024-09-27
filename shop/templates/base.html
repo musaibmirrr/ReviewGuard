@@ -235,13 +235,7 @@
                   <li><a class="dropdown-item" href="/shop/register">Register</a></li>
                   <li><a class="dropdown-item" href="/shop/login">Login</a></li>
                   {% endif %}
-
-                  {% comment %} this code runs for superuser {% endcomment %}
-                   {% if user.is_authenticated  %}
-                    {% if user.is_superuser%}
-                      <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
-                    {% endif %}
-                  {% endif %} 
+ 
                 </ul>
               </div>
             </li>
