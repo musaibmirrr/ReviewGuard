@@ -1,8 +1,14 @@
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import Product
-from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_protect
+
+@csrf_protect
+@require_http_methods(["GET", "POST"])
 
 # Create your views here.
 

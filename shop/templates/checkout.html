@@ -7,7 +7,7 @@
         Checkout @stopshop
     </h1>
     <form class="row g-3 validated-form" novalidate>
-        
+        {% csrf_token %} 
         <div class="col-12">
           <label for="inputAddress" class="form-label text-white">Delivery Address</label>
           <input type="text" class="form-control" id="inputAddress"  required>
