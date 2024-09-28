@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from backendApp.models import Product
-from shop.models import Order,Review
+from shop.models import Order,Review,Shop_session
 from textblob import TextBlob
 
 
@@ -19,10 +19,14 @@ def get_client_ip(request):
 # Create your views here.
 def index(req):
     if (req.user.is_authenticated) and (not req.user.is_superuser):
-            context = {'name': req.user.username}
-            return render(req, 'index.html',context)
+        shop_user = Shop_session(user_name = req.user.username)
+        shop_user.save()
+        context = {'name': req.user.username}
+        return render(req, 'index.html',context)
     else:
-        return redirect('/shop/login')
+        shop_user = Shop_session.objects.last()
+        context = {'name': shop_user.user_name}
+        return render(req, 'index.html',context)
 
 
 def catalog(req):

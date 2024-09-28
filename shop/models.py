@@ -31,3 +31,9 @@ class Review(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+
+class Shop_session(models.Model):
+    user_name = models.CharField(max_length=255)
+    def __str__(self):
+        return self.user.username
