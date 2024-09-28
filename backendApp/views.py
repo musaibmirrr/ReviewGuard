@@ -93,7 +93,7 @@ def admin_logout(req):
     if req.user.is_authenticated and req.user.is_superuser:
         if (req.method == 'POST'):
             logout(req)
-            messages.success(req, 'You have signed out!')
+            messages.success(req, 'You have been logged out!')
             return redirect('/reviewGuard/login')
         else:
             messages.error(req, 'Cannot proceed that request!')

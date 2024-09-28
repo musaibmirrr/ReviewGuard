@@ -216,10 +216,13 @@
               <div class="dropdown">
                 <button class="btn btn-outline-light dropdown-toggle my-2" type="button" id="dropdownMenuButton1"
                   data-bs-toggle="dropdown" aria-expanded="false">
-                  {% if user.is_authenticated %}
+                  {% if user.is_authenticated and not user.is_superuser%}
                   {{name}}
                   {% endif %}
                   {% if not user.is_authenticated  %}
+                  User
+                  {% endif %}
+                  {% if user.is_authenticated and user.is_superuser %}
                   User
                   {% endif %}
                 </button>
@@ -232,7 +235,8 @@
                   {% endif %}
 
                   {% if user.is_authenticated and user.is_superuser  %}
-                  <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
+                  <li><a class="dropdown-item" href="/shop/register">Register</a></li>
+                  <li><a class="dropdown-item" href="/shop/login">Login</a></li>
                   {% endif %}
 
                   {% if not user.is_authenticated  %}

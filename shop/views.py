@@ -23,10 +23,16 @@ def index(req):
         shop_user.save()
         context = {'name': req.user.username}
         return render(req, 'index.html',context)
+    
+    elif (req.user.is_authenticated) and (req.user.is_superuser):
+       if(not Shop_session.objects.count() > 0): 
+            return render(req, 'index.html')
+       else:
+            shop_user = Shop_session.objects.last()
+            context = {'name': shop_user.user_name}
+            return render(req,'index.html',context)
     else:
-        shop_user = Shop_session.objects.last()
-        context = {'name': shop_user.user_name}
-        return render(req, 'index.html',context)
+        return render(req, 'index.html')
 
 
 def catalog(req):
