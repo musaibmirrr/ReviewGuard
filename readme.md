@@ -33,6 +33,17 @@ User and Order Management: Track users, view orders, and manage the e-commerce p
 #IP Approach
 Our system can fetch the ip of the user even though proxies are used, and if the count exeeds 3, he/she cannot make a review anymore.
 
+#Installation Instructions
+
+Create a virtual environment:
+python -m venv venv
+
+Activate virtual environment:
+#on Mac source venv/bin/activate   # On Windows: venv\Scripts\activate
+
+Install required dependencies:
+pip install -r requirements.txt
+
 #conclusion
 ReviewGuard has integrated sentiment analysis and ip approach to maximize the detection for fake reviews and hence providing a way to ensure integrity and credibility for the system.
 
