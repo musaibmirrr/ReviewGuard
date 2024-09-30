@@ -1,4 +1,4 @@
-ReviewGuard: AI-Driven Fake Review Detection System
+# ReviewGuard: AI-Driven Fake Review Detection System
 
 # Overview
 ReviewGuard is an intelligent Fake Review Detection System designed to maintain the integrity of user reviews on e-commerce platforms. Built using Django, MongoDB, and TextBlob, the system employs Sentiment Analysis to filter out potentially fraudulent reviews, ensuring that only authentic, verified reviews from genuine customers are displayed. This solution improves user trust and enhances the overall shopping experience.
@@ -20,7 +20,6 @@ Machine Learning: TextBlob for Sentiment Analysis
 Session Management: Django Sessions with custom session handling for user and admin roles
 
 # How It Works
-
 For Users:
 Shop and Purchase: Users can browse products and complete purchases.
 Review System: Verified buyers can leave reviews on purchased products, they will be given a badge to verify that a user has purchased the product before submiting a review. Those users who have not purchased the product, there review will go sentiment analysis and based on that result our system decided whether its too much positive or negative and hence not display those reviews.
