@@ -31,18 +31,22 @@ Review Analysis: Admins can review user feedback and approve or delete fake revi
 User and Order Management: Track users, view orders, and manage the e-commerce platform through the admin interface.
 
 #IP Approach
-Our system can fetch the ip of the user even though proxies are used, and if the count exeeds 3, he/she cannot make a review anymore.
+Our system can fetch the ip of the users even though proxies are used, and if the count exeeds 3, he/she cannot make a review anymore.
 
 #Installation Instructions
-
 Create a virtual environment:
 python -m venv venv
-
 Activate virtual environment:
-#on Mac source venv/bin/activate   # On Windows: venv\Scripts\activate
+#on Mac source venv/bin/activate   
+# On Windows: venv\Scripts\activate
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
 
 Install required dependencies:
 pip install -r requirements.txt
+python
+mongodb
 
 #conclusion
 ReviewGuard has integrated sentiment analysis and ip approach to maximize the detection for fake reviews and hence providing a way to ensure integrity and credibility for the system.
