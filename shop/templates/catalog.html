@@ -12,20 +12,22 @@
             </div>
             <div class="col-md-8 text-white">
                 <div class="card-body">
-                    <a href="/shop/product/{{product.id}}" class=" text-decoration-none ">
+                    <a href="/shop/product/{{product.id}}" class="text-decoration-none">
                         <h2 class="card-title hoverHeader">{{product.name}}</h2>
                     </a>
                     <p class="card-text">{{product.description}}</p>
                     <br>
-                    <h4 class="price">{{product.price}}</h4><span><span class=" text-white">MRP:</span><span
-                            class="mrp text-white">{{product.mrp}}</span>
-                            <br>
-                        <p class="card-text"><small>Inclusive of all taxes</small></p>
+                    <h4 class="price">{{product.price}}</h4>
+                    <span class=" text-white">MRP:</span>
+                    <span class="mrp text-white">{{product.mrp}}
+                    </span>
+                    <br>
+                    <p class="card-text"><small>Inclusive of all taxes</small></p>
                 </div>
             </div>
         </div>
     </div>
-    
+
 </div>
 
 {% endfor %}

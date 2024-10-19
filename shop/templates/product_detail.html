@@ -17,6 +17,14 @@
                     </a>
                     <p class="card-text">{{product.description}}</p>
                     <br>
+                    <p class="text-secondary">Average Rating</p>
+                    <p class="starability-result" data-rating="{{average}}">
+                        Rated: 3 stars
+                    </p>
+                    <p class="text-secondary">
+                        Overall {{divisor}} Reviews
+                    </p>
+
                     <h4 class="price">{{product.price}}</h4><span><span class=" text-white">MRP:</span><span
                             class="mrp text-white">{{product.mrp}}</span>
                         <br>
@@ -28,9 +36,7 @@
             </div>
         </div>
     </div>
-
     <br>
-
     <div class="row">
         <div class="col-6">
             <h2 class="text-white fw-bold"> Leave a Review</h2>
@@ -74,7 +80,7 @@
 
                         <h4 class="card-title">
                             @{{review.user.username}}
-                            {% if review.isVerified %} 
+                            {% if review.isVerified %}
                             <span class="text-muted fs-6">
                                 (Verified Purchase)
                             </span>
@@ -90,8 +96,8 @@
                 </div>
             </div>
             {% endfor %}
-            
-            
+
+
         </div>
     </div>
 </div>
