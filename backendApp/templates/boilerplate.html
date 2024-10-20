@@ -8,15 +8,20 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
     <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css"> 
+
+  {% load static %}
+
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
-    
+
 
     <!-- Bootstrap core CSS -->
 <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- Favicons -->
+<link rel="icon" type="image/png" href="{% static '/images/favicon.png' %}">
 <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -42,10 +47,10 @@
       }
       .navstyle{
         padding: 10px;
-      
+
         font-size: larger;
-      
-        
+
+
       }
       .reviewtext{
         /* margin-top: 5px; */
@@ -57,18 +62,18 @@
       body{
         background-color: rgba(33,37,41, 1);
       }
-      
+
     </style>
 
-    
+
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
   </head>
   <body>
-    
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
       <div class="container-fluid">
-        <a class="navbar-brand fs-3" href="#">ReviewGuard</a>
+        <a class="navbar-brand fs-3" href="/reviewGuard">ReviewGuard</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -90,23 +95,23 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/reviewGuard/viewproducts">View Products</a></li>
                 <li><a class="dropdown-item" href="/reviewGuard/addproducts">Add Products</a></li>
-                
+
               </ul>
             </li>
-           
+
           </ul>
-         
+
            <form action="/reviewGuard/signout" method="POST">
               {% csrf_token %}
             <button class="btn btn-outline-light" type="submit">Sign Out</button>
           </form>
-          
+
         </div>
       </div>
     </nav>
 
     {% include 'partials/flash.html' %}
-    
+
 
  {% block body %}{% endblock body %}
     <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
