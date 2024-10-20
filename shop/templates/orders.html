@@ -2,15 +2,17 @@
 {% block title %} Orders{% endblock title %}
 {% block body %}
 <h3 class="card-title text-white text-center py-2">ORDER DETAILS</h3>
-<div class="row">
- {% if not orders  %}
+
+{% if not orders  %}
+<div class="row my-5">
  <marquee direction="right" class="text-white fw-bold vh-100">
    NO ORDERS CURRENTLY
  </marquee>
-{% endif %}
 </div>
+{% endif %}
 
 
+<div class="row">
 {% for order in orders %}
   <div class="col-3">
     <div class="card my-5 mx-5 cardstyle" style="width: 18rem;">
@@ -29,8 +31,8 @@
 
       </div>
     </div>
-  </div>
+    </div>
 
-{% endfor %}
-</div>
+    {% endfor %}
+  </div>
 {% endblock body %}

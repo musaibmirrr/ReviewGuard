@@ -51,7 +51,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'backendApp.middleware.MultiAppSessionMiddleware',
 ]
 
@@ -77,17 +76,13 @@ WSGI_APPLICATION = 'ReviewGuard.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'ReviewGuard',
         'CLIENT': {
             'host': 'mongodb://localhost:27017/',
-            # If your MongoDB requires authentication:
-            # 'username': 'your_username',
-            # 'password': 'your_password',
+
         }
     },
     'shop_sessions': {
@@ -158,9 +153,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # For shop app sessions
-SHOP_SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Default DB session engine for shop
+# Default DB session engine for shop
+SHOP_SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SHOP_SESSION_DB_ALIAS = 'shop_sessions'
 
 # For reviewGuard app sessions
-ADMIN_SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # DB session engine for admin
+# DB session engine for admin
+ADMIN_SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 ADMIN_SESSION_DB_ALIAS = 'admin_sessions'

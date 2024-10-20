@@ -44,9 +44,7 @@ urlpatterns = [
     #backend routes
      path('reviewGuard/',backendview.index),
      path('reviewGuard/viewproducts',backendview.viewproducts),
-
      path('reviewGuard/addproducts',backendview.addproducts),
-     
      path('reviewGuard/orders',backendview.allorders),
      path('reviewGuard/view_users',backendview.view_users),
      path('reviewGuard/login',backendview.admin_login),
