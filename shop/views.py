@@ -31,7 +31,9 @@ def index(req):
             return render(req, 'index.html')
         else:
             shop_user = Shop_session.objects.last()
-            context = {'name': shop_user.user_name}
+            context = {'name': shop_user.user_name,
+                        'id' : 1
+                       }
             return render(req, 'index.html', context)
     else:
         return render(req, 'index.html')

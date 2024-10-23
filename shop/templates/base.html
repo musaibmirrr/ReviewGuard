@@ -152,7 +152,7 @@
       color: #FFE4C4
     }
 
-    .hoverHeader:hover{
+    .hoverHeader:hover {
       color: white;
     }
   </style>
@@ -217,32 +217,43 @@
               <div class="dropdown">
                 <button class="btn btn-outline-light dropdown-toggle my-2" type="button" id="dropdownMenuButton1"
                   data-bs-toggle="dropdown" aria-expanded="false">
+
+
                   {% if user.is_authenticated and not user.is_superuser%}
                   {{name}}
                   {% endif %}
-                  {% if not user.is_authenticated  %}
+
+                  {% if not user.is_authenticated %}
                   User
                   {% endif %}
 
                   {% if user.is_authenticated and user.is_superuser %}
-                  User
-                  {% endif %}
+                    {% if id == 1 %}
+                      {{name}}
+                      {% else %}
+                        User
+                    {% endif %}
+                  {%endif%}
 
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
-                  {% if  user.is_authenticated %}
-                    {% if  not user.is_superuser%}
+                  {% if user.is_authenticated %}
+                  {% if not user.is_superuser%}
+                  <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
+                  {% endif %}
+                  {% endif %}
+
+                  {% if user.is_authenticated and user.is_superuser%}
+                    {% if id == 1 %}
                       <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
+                    {% else %}
+                      <li><a class="dropdown-item" href="/shop/register">Register</a></li>
+                      <li><a class="dropdown-item" href="/shop/login">Login</a></li>
                     {% endif %}
-                  {% endif %}
+                  {%endif%}
 
-                  {% if user.is_authenticated and user.is_superuser  %}
-                  <li><a class="dropdown-item" href="/shop/register">Register</a></li>
-                  <li><a class="dropdown-item" href="/shop/login">Login</a></li>
-                  {% endif %}
-
-                  {% if not user.is_authenticated  %}
+                  {% if not user.is_authenticated %}
                   <li><a class="dropdown-item" href="/shop/register">Register</a></li>
                   <li><a class="dropdown-item" href="/shop/login">Login</a></li>
                   {% endif %}
@@ -309,8 +320,9 @@
   </footer>
 
 
-{% comment %} CDN {% endcomment %}
- {% comment %} <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+  {% comment %} CDN {% endcomment %}
+  {% comment %}
+  <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
