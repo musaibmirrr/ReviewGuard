@@ -69,35 +69,4 @@ from django.contrib.auth.models import User
 #         product=self.product, rating=5).exists())
 
 
-def calculate_accuracy():
-    reviews = Review.objects.all()
-
-# Ground truth labels
-    true_labels = []
-    for review in reviews:
-        if(review.isFake ==  True):
-            true_labels.append(True)
-        else:
-            true_labels.append(False)
-    # true_labels = [review.isFake for review in reviews]
-    predictions = []
-
-    threshold = 0.5  # Example threshold for fake review detection
-
-    for review in reviews:
-        if float(review.polarity.to_decimal()) < threshold:
-            predictions.append(True)  # Predicted as fake
-        else:
-            predictions.append(False)  # Predicted as real
-
-    correct = 0
-    for i in range(len(reviews)):
-        if predictions[i] == true_labels[i]:
-            correct += 1
-
-    accuracy = correct / len(reviews) * 100
-    return accuracy
-
-
-# Output accuracy
-print(f"Accuracy: {calculate_accuracy():.2f}%")
+# accuracy = correctly predicted / total reviews X 100

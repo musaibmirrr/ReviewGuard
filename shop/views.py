@@ -57,10 +57,9 @@ def product_detail(req, id):
             rating = req.POST.get('rating')
             body = req.POST.get('body')
 
-            # ip code
+            # ip based thresolding
             ipAddress = get_client_ip(req)
-            review_count = Review.objects.filter(
-                ipAddress=ipAddress, product=product).count()
+            review_count = Review.objects.filter(ipAddress=ipAddress, product=product).count()
             ipCount = review_count + 1
 
             # text blob code
@@ -74,6 +73,7 @@ def product_detail(req, id):
                 if order.product.id == id:
                     isVerified = True
 
+            # Sentiment Analysis
             if polarity > 0.9:
                 if subjectivity <= 0.5:
                     isFake = False
@@ -95,6 +95,7 @@ def product_detail(req, id):
             else:
                 isFake = False
 
+            # if more then three reviews done
             if review_count > 2:
                 messages.error(
                     req, "You have already submitted 3 reviews for this product. Thank you.")
@@ -109,27 +110,32 @@ def product_detail(req, id):
             messages.success(req, "You successfully made a review!")
             return redirect(f'/shop/product/{id}')
 
+        # filtering reviews based on ip, sentiment analysis and verified badge approaches
         all_reviews = Review.objects.filter(product=product)
         reviews = []
         for review in all_reviews:
             if review.isFake is False and review.ipCount <= 3:
                 reviews.append(review)
 
+        # average rating for genuine reviews
         allReviews = Review.objects.filter(product=product)
         sum = 0
-        divisor = allReviews.count()
-        for docs in allReviews:
-            sum = sum + docs.rating
+        divisor = 0
+        for elm in allReviews:
+            if elm.isFake is False:
+                sum = sum + elm.rating
+                divisor = divisor + 1
 
         if (divisor > 0):
             average = int(sum/divisor)
         else:
             average = 0
+        overall_reviews = Review.objects.filter(product=product).count()
         context = {'name': req.user.username,
                    'product': product,
                    'reviews': reviews,
                    'average': average,
-                   'divisor': divisor
+                   'divisor': overall_reviews
                    }
         return render(req, 'product_detail.html', context)
     else:
