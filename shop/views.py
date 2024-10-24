@@ -31,9 +31,7 @@ def index(req):
             return render(req, 'index.html')
         else:
             shop_user = Shop_session.objects.last()
-            context = {'name': shop_user.user_name,
-                        'id' : 1
-                       }
+            context = {'name': shop_user.user_name}
             return render(req, 'index.html', context)
     else:
         return render(req, 'index.html')
@@ -61,7 +59,8 @@ def product_detail(req, id):
 
             # ip based thresolding
             ipAddress = get_client_ip(req)
-            review_count = Review.objects.filter(ipAddress=ipAddress, product=product).count()
+            review_count = Review.objects.filter(
+                ipAddress=ipAddress, product=product).count()
             ipCount = review_count + 1
 
             # text blob code

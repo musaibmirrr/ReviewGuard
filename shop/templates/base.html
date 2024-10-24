@@ -228,11 +228,7 @@
                   {% endif %}
 
                   {% if user.is_authenticated and user.is_superuser %}
-                    {% if id == 1 %}
-                      {{name}}
-                      {% else %}
                         User
-                    {% endif %}
                   {%endif%}
 
                 </button>
@@ -245,12 +241,9 @@
                   {% endif %}
 
                   {% if user.is_authenticated and user.is_superuser%}
-                    {% if id == 1 %}
-                      <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
-                    {% else %}
+
                       <li><a class="dropdown-item" href="/shop/register">Register</a></li>
                       <li><a class="dropdown-item" href="/shop/login">Login</a></li>
-                    {% endif %}
                   {%endif%}
 
                   {% if not user.is_authenticated %}
